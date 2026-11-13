@@ -15,9 +15,16 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          ssh-key: ${{ secrets.SHARED_SSH_KEY }}
+      - name: Fetch shared submodule (read-only deploy key)
+        env:
+          SHARED_SSH_KEY: ${{ secrets.SHARED_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SHARED_SSH_KEY" > ~/.ssh/shared_key
+          chmod 600 ~/.ssh/shared_key
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND='ssh -i ~/.ssh/shared_key -o IdentitiesOnly=yes' git submodule update --init --depth=1
+          rm -f ~/.ssh/shared_key
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.2
