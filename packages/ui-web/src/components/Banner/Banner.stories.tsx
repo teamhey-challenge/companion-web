@@ -6,7 +6,7 @@ import { Banner } from './Banner';
 const meta = {
   title: '웹 부품/표시/Banner',
   component: Banner,
-  args: { tone: 'info', message: '기사님이 정차하면 확인해요.' },
+  args: { tone: 'info', message: '차가 멈추면 다시 확인해요.' },
 } satisfies Meta<typeof Banner>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,7 +21,7 @@ export const AllStates: Story = {
     <Cases>
       {(['info', 'warning', 'danger', 'success'] as const).map((tone) => (
         <Case key={tone} title={tone}>
-          <Banner tone={tone} message="기사님이 정차하면 확인해요." />
+          <Banner tone={tone} message="차가 멈추면 다시 확인해요." />
           <Banner tone={tone} title="연결이 불안정해요" message="잠시 뒤 자동으로 다시 연결해요." />
           <Banner
             tone={tone}

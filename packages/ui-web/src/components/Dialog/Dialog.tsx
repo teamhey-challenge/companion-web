@@ -9,7 +9,7 @@ export interface DialogProps {
   open: boolean;
   title: string;
   message: string;
-  /** 확인 단추 글. 동사로: "운행 끝내기". */
+  /** 확인 단추 글. 동사로: "모두 지우기". */
   confirm: string;
   /** 취소 단추 글. */
   cancel: string;

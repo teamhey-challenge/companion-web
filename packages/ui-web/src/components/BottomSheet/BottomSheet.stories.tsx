@@ -46,7 +46,7 @@ function Demo({
   );
 }
 
-const short = <Text variant="body">{'기사님이 확인하는 중이에요.'}</Text>;
+const short = <Text variant="body">{'헤이파리가 기억을 확인하는 중이에요.'}</Text>;
 const long = (
   <>
     {Array.from({ length: 14 }, (_, i) => (
@@ -85,7 +85,7 @@ export const NotDismissible: Story = {
   name: '닫기 불가 (응답 필요)',
   render: () => (
     <Demo
-      title="기사님이 내릴 곳을 제안했어요"
+      title="이 기억을 지울까요?"
       body={short}
       dismissible={false}
       footer={<Button variant="primary">{'여기 좋아요'}</Button>}
@@ -117,7 +117,7 @@ export const OpenWithMenu: Story = {
           items={[
             { id: 'dest', label: '목적지 바꾸기', icon: 'pin' },
             { id: 'lang', label: '언어 바꾸기', icon: 'globe' },
-            { id: 'leave', label: '운행에서 나가기', icon: 'logout', tone: 'danger' },
+            { id: 'leave', label: '연결 끊기', icon: 'logout', tone: 'danger' },
           ]}
         />
       }

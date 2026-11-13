@@ -39,7 +39,7 @@ export const AllStates: Story = {
       <Case title="누르면 4초 뒤 사라져요">
         <Stack gap={8} align="start">
           <Demo label="기본" message="링크를 복사했어요" />
-          <Demo label="성공" tone="success" message="기사님께 전했어요" />
+          <Demo label="성공" tone="success" message="연결됐어요" />
           <Demo label="오류" tone="danger" message="보내지 못했어요. 다시 시도해 주세요." />
           <Demo label="긴 글" message={LONG_JA} />
         </Stack>

@@ -28,24 +28,15 @@ const SITUATIONS = {
   Divider: [],
   VisuallyHidden: ['Empty'],
   Text: ['LongText', 'Empty'],
-  Wordmark: [],
   Icon: ['Many'],
   Button: ['LongText', 'Disabled', 'Loading'],
   IconButton: ['Disabled'],
   SegmentedControl: ['LongText'],
-  PartySizePicker: [],
   ChoiceChip: ['LongText', 'Disabled'],
   ChipGroup: ['Empty', 'Many'],
-  PresetTile: ['LongText', 'Disabled', 'TwoLineLabel'],
-  PresetGrid: ['Many'],
-  LanguageOption: ['LongText'],
-  LanguageList: ['Many'],
-  SearchField: ['Empty', 'Loading'],
-  TextComposer: ['LongText', 'Empty', 'Error', 'Loading'],
   ToggleRow: ['LongText', 'Disabled'],
   Card: ['LongText', 'Empty'],
   StatusPill: ['LongText'],
-  RequestStatus: ['Error', 'Loading'],
   Banner: ['LongText'],
   EmptyState: ['LongText'],
   Spinner: [],
@@ -53,38 +44,22 @@ const SITUATIONS = {
   KeyValueRow: ['LongText', 'Empty'],
   ConnectionIndicator: [],
   Countdown: [],
-  PlateBadge: ['Empty'],
   BottomSheet: ['LongText'],
   Dialog: ['LongText'],
   Toast: ['LongText'],
   Menu: ['LongText', 'Empty', 'Many'],
-  ScreenHeader: ['Error'],
-  PlaceResultRow: ['LongText'],
-  PlaceResultList: ['LongText', 'Empty', 'Many'],
-  DestinationSummary: ['LongText', 'AreaInsideAddress'],
-  ConditionSummary: ['Empty', 'Many'],
-  BoardingCard: ['LongText', 'Empty'],
-  ShowDriverCard: ['LongText'],
-  TripProgress: ['Empty'],
-  TollNotice: [],
-  MessageBubble: ['LongText', 'Error', 'Loading'],
-  MessageList: ['Empty', 'Many', 'CutTopFade'],
-  AdSlot: ['LongText', 'Empty', 'Many'],
   TextField: ['LongText', 'Empty', 'Disabled'],
-  DropoffProposalCard: ['LongText', 'Disabled', 'Loading'],
-  ArrivalSummary: ['LongText', 'Empty'],
-  InviteCard: ['LongText'],
 };
 
 /**
  * 폰 웹 화면마다 상태 이야기와 주요 상호작용(play)이 있는지 본다. 화면이 늘면 여기에 적는다.
  */
 const SCREEN_STORIES = {
-  'P0 QR 입장': ['Default', 'Invalid'],
+  'W1 QR 입장': ['Default', 'Invalid'],
 };
 /** 이 화면들의 이야기는 play 함수가 있어야 한다(주요 상호작용). */
 const SCREEN_PLAY = {
-  'P0 QR 입장': ['Default'],
+  'W1 QR 입장': ['Default'],
 };
 
 const toId = (name) => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
@@ -131,10 +106,10 @@ for (const name of exported) {
 
 const screenIdOf = (name) => name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 for (const [screen, names] of Object.entries(SCREEN_STORIES)) {
-  const title = `승객 화면/${screen}`;
+  const title = `폰 웹/${screen}`;
   const have = entries.filter((e) => e.title === title);
   if (have.length === 0) {
-    problems.push(`${screen}: 승객 화면 이야기가 index.json 에 없어요.`);
+    problems.push(`${screen}: 폰 웹 이야기가 index.json 에 없어요.`);
     continue;
   }
   for (const name of names) {

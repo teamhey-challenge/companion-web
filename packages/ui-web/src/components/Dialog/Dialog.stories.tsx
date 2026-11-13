@@ -62,11 +62,11 @@ function Demo({
 }
 
 export const Default: Story = {
-  render: () => <Demo opener="나가기" title="운행에서 나갈까요?" message="나가면 이 운행 내용을 다시 볼 수 없어요." confirm="나가기" tone="danger" />,
+  render: () => <Demo opener="연결 끊기" title="연결을 끊을까요?" message="끊으면 이 폰에서 기억을 볼 수 없어요." confirm="연결 끊기" tone="danger" />,
   play: async ({ canvasElement }) => {
     const opener = within(canvasElement).getByRole('button', { name: '나가기' });
     await userEvent.click(opener);
-    const dialog = await within(document.body).findByRole('alertdialog', { name: '운행에서 나갈까요?' });
+    const dialog = await within(document.body).findByRole('alertdialog', { name: '연결을 끊을까요?' });
     await expect(dialog).toHaveAttribute('aria-modal', 'true');
     await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
     for (let i = 0; i < 5; i += 1) {
@@ -93,8 +93,8 @@ export const AllStates: Story = {
   render: () => (
     <Cases>
       <Case title="기본 / 위험">
-        <Demo opener="기본 대화상자" title="요청을 보낼까요?" message="기사님께 한국어로 전해져요." confirm="보내기" />
-        <Demo opener="위험 대화상자" title="운행을 끝낼까요?" message="끝내면 승객 기기에서 연결이 끊어져요." confirm="운행 끝내기" tone="danger" />
+        <Demo opener="기본 대화상자" title="기억을 저장할까요?" message="헤이파리가 다음 대화부터 기억해요." confirm="저장하기" />
+        <Demo opener="위험 대화상자" title="기억을 모두 지울까요?" message="지우면 헤이파리가 지난 대화를 잊어요." confirm="모두 지우기" tone="danger" />
       </Case>
     </Cases>
   ),

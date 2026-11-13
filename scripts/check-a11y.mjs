@@ -6,7 +6,7 @@
 //   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): ws 주소(없으면 DS_BROWSER_WS)
 //   --langs=en,ja       어떤 언어로 그릴지(기본 en; 환경변수 A11Y_LANGS)
 //   --themes=light      어떤 테마로 그릴지(기본 light,dark; 환경변수 A11Y_THEMES)
-//   --only=승객 화면     "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 전체; 환경변수 A11Y_FILTER)
+//   --only=폰 웹     "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 전체; 환경변수 A11Y_FILTER)
 import { createRequire } from 'node:module';
 import { chromium } from 'playwright-core';
 import { openStory } from './lib/sb-nav.mjs';
@@ -30,7 +30,7 @@ const only = flag('only') ?? process.env.A11Y_FILTER ?? '';
 const PARALLEL = 2;
 const SETTLE_MS = 800;
 const RECYCLE_EVERY = 25;
-const screenPrefix = '승객 화면';
+const screenPrefix = '폰 웹';
 
 const indexRes = await fetch(`${base}/index.json`).catch(() => null);
 if (!indexRes?.ok) {

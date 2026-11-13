@@ -6,7 +6,6 @@ import { Inline } from '../Inline/Inline';
 import { KeyValueRow } from '../KeyValueRow/KeyValueRow';
 import { Section } from '../Section/Section';
 import { Text } from '../Text/Text';
-import { Wordmark } from '../Wordmark/Wordmark';
 import { LONG_JA, Phone } from '../../internal/showcase';
 import { AppFrame } from './AppFrame';
 
@@ -22,14 +21,14 @@ const labels = { online: '연결됨', reconnecting: '다시 연결하는 중', o
 
 const header = (
   <Inline gap={16} justify="between">
-    <Wordmark partySize={2} size="md" animate={false} />
+    <Text variant="label" tone="muted">{'헤이파리'}</Text>
     <ConnectionIndicator status="online" labels={labels} />
   </Inline>
 );
 
 const footer = (
   <Button variant="primary" size="lg">
-    {'기사님께 보내기'}
+    {'연결하기'}
   </Button>
 );
 

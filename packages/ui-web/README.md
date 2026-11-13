@@ -1,6 +1,6 @@
 # @hey/ui-web
 
-HEY 승객 웹의 디자인 시스템이에요. 승객 웹 화면은 이 패키지의 부품만으로 조립해요. 계약은 `docs/architecture.md` 4절, 부품 목록은 `docs/components.md` 2절이에요.
+컴패니언 폰 웹의 디자인 시스템이에요. 폰 웹 화면은 이 패키지의 부품만으로 조립해요. 계약은 `docs/architecture.md` 4절, 부품 목록은 `docs/components.md` 2절이에요.
 
 ## 규칙 (예외 없음)
 

@@ -70,7 +70,7 @@ const check = (ok, msg) => {
 check(latin.length === 1 && hangul.length === 1, '글꼴 조각이 라틴 1개 + 한글 1개');
 check(fullFont.length === 0, '2 MB 전체 Pretendard 가 번들에 없음');
 const allText = readdirSync(join(dist, 'assets')).filter((f) => /\.(js|css)$/.test(f)).map((f) => readFileSync(join(dist, 'assets', f), 'utf8')).join('\n');
-check(!/leaflet-container|_leaflet_id/.test(allText), '지도 라이브러리(Leaflet)가 번들 어디에도 없음 (승객 웹에 지도 없음, Q14)');
+check(!/leaflet-container|_leaflet_id/.test(allText), '지도 라이브러리(Leaflet)가 번들 어디에도 없음 (폰 웹에 지도 없음, Q14)');
 
 if (failures.length > 0) {
   console.error(`\ncheck:bundle 실패 (${failures.length}): ${failures.join(' / ')}`);

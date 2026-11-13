@@ -7,7 +7,7 @@ const items = [
   { id: 'dest', label: '목적지 바꾸기', icon: 'pin' as const },
   { id: 'lang', label: '언어 바꾸기', icon: 'globe' as const },
   { id: 'invite', label: '일행 초대하기', icon: 'users' as const },
-  { id: 'leave', label: '운행에서 나가기', icon: 'logout' as const, tone: 'danger' as const },
+  { id: 'leave', label: '연결 끊기', icon: 'logout' as const, tone: 'danger' as const },
 ];
 
 const meta = { title: '웹 부품/겹침/Menu', component: Menu, args: { items, onSelect: fn() } } satisfies Meta<typeof Menu>;

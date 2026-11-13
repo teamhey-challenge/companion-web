@@ -5,7 +5,7 @@ import { StatusPill } from './StatusPill';
 const meta = {
   title: '웹 부품/표시/StatusPill',
   component: StatusPill,
-  args: { tone: 'info', label: '기사님 확인 중' },
+  args: { tone: 'info', label: '연결 확인 중' },
 } satisfies Meta<typeof StatusPill>;
 export default meta;
 type Story = StoryObj<typeof meta>;

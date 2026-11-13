@@ -1,4 +1,4 @@
-// 모바일 느린 회선 타이밍: 빌드된 승객 웹(/c/:carCode)을 390px 폭, CPU 4배 느리게, 느린 4G 회선으로 열어
+// 모바일 느린 회선 타이밍: 빌드된 폰 웹(/c/:carCode)을 390px 폭, CPU 4배 느리게, 느린 4G 회선으로 열어
 // 탐색 타이밍 + FCP + LCP(PerformanceObserver)와 받은 바이트를 잰다. 중계 서버는 쓰지 않는다(요청을 가로채 고정 응답).
 // 사용: DS_BROWSER_WS=$(ds-browser) node scripts/perf-timing.mjs [--dist apps/passenger-web/dist] [--runs 3] [--lang ko-KR] [--shot out.png]
 //   ds-browser 연결은 최대 2개를 나눠 쓰므로 측정이 끝나면 곧바로 닫는다.

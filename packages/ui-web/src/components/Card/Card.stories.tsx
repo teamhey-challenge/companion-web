@@ -59,7 +59,7 @@ export const AllStates: Story = {
       </Case>
       <Case title="긴 글 (일본어)">
         <Card padding={16}>
-          <StatusPill tone="info" label="기사님 확인 중" />
+          <StatusPill tone="info" label="연결 확인 중" />
           <Text variant="body">{LONG_JA}</Text>
         </Card>
       </Case>

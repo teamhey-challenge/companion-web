@@ -70,13 +70,13 @@ if (withLayout || withA11y) {
     }
     if (withA11y) {
       const env = { ...process.env, DS_BROWSER_WS: ws };
-      // 부품 이야기는 언어와 무관하므로 en으로 한 번, 조립된 승객 화면은 나머지 언어(ja, zh-Hans, zh-Hant, vi, th)로 다시 잰다.
+      // 부품 이야기는 언어와 무관하므로 en으로 한 번, 조립된 폰 웹은 나머지 언어(ja, zh-Hans, zh-Hant, vi, th)로 다시 잰다.
       const narrowed = passthrough.some((a) => a.startsWith('--langs=') || a.startsWith('--only='));
       if (narrowed) {
         run('check:a11y', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, ...passthrough], { env });
       } else {
         run('check:a11y', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`], { env: { ...env, A11Y_LANGS: process.env.A11Y_LANGS ?? 'en' } });
-        run('check:a11y 승객 화면', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, '--only=승객 화면'], {
+        run('check:a11y 폰 웹', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, '--only=폰 웹'], {
           env: { ...env, A11Y_LANGS: process.env.A11Y_SCREEN_LANGS ?? 'ja,zh-Hans,zh-Hant,vi,th' },
         });
       }

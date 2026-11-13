@@ -39,7 +39,7 @@ export const AllStates: Story = {
         <Demo initial={false} label="소리" />
       </Case>
       <Case title="설명 있음">
-        <Demo initial label="일행 초대 허용" description="초대 링크로 들어온 일행은 기사님 승인 없이 함께 볼 수 있어요." />
+        <Demo initial label="대화 요약을 기억으로 저장" description="끄면 헤이파리가 이 대화를 기억하지 않아요." />
       </Case>
       <Case title="비활성 (켬 · 끔)">
         <Demo initial label="자동 번역" disabled />

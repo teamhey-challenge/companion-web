@@ -9,7 +9,7 @@ import { Button, type ButtonProps } from './Button';
 const meta = {
   title: '웹 부품/행동/Button',
   component: Button,
-  args: { variant: 'primary', children: '기사님께 보내기', onClick: fn() },
+  args: { variant: 'primary', children: '연결하기', onClick: fn() },
 } satisfies Meta<typeof Button>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -18,7 +18,7 @@ const VARIANTS: ButtonProps['variant'][] = ['primary', 'accent', 'secondary', 'g
 
 export const Default: Story = {
   play: async ({ canvasElement, args }) => {
-    const button = within(canvasElement).getByRole('button', { name: '기사님께 보내기' });
+    const button = within(canvasElement).getByRole('button', { name: '연결하기' });
     await userEvent.click(button);
     await expect(args.onClick).toHaveBeenCalledTimes(1);
     await userEvent.tab();
@@ -51,9 +51,9 @@ export const Loading: Story = {
 
 export const LinkMode: Story = {
   name: '링크 모드 (href)',
-  args: { href: 'https://example.com', variant: 'secondary', icon: 'link', children: '택시 이용 안내 열기' },
+  args: { href: 'https://example.com', variant: 'secondary', icon: 'link', children: '이용 안내 열기' },
   play: async ({ canvasElement }) => {
-    const link = within(canvasElement).getByRole('link', { name: '택시 이용 안내 열기' });
+    const link = within(canvasElement).getByRole('link', { name: '이용 안내 열기' });
     await expect(link).toHaveAttribute('href', 'https://example.com');
     await expect(within(canvasElement).queryByRole('button')).toBeNull();
   },

@@ -22,7 +22,7 @@ export default tseslint.config(
     settings: { react: { version: '19' } },
   },
 
-  // 승객 웹: 화면은 DS 부품만으로 조립한다 (docs/architecture.md §4 규칙 6, 8).
+  // 폰 웹: 화면은 DS 부품만으로 조립한다 (docs/architecture.md §4 규칙 6, 8).
   // 구조로 막을 수 없는 자리라 린트로 막는다: 소문자 태그·style·className은 JSX 문법이라 타입으로 거부할 수 없다.
   {
     files: [PASSENGER],
@@ -31,7 +31,7 @@ export default tseslint.config(
         'error',
         {
           selector: 'JSXOpeningElement[name.type="JSXIdentifier"][name.name=/^[a-z]/]',
-          message: '승객 웹 코드에서는 HTML 태그를 쓰지 않아요. @hey/ui-web 부품을 쓰세요.',
+          message: '폰 웹 코드에서는 HTML 태그를 쓰지 않아요. @hey/ui-web 부품을 쓰세요.',
         },
         {
           selector: 'JSXAttribute[name.name="style"]',
@@ -46,7 +46,7 @@ export default tseslint.config(
         'error',
         {
           patterns: [
-            { group: ['**/*.css', '*.css'], message: '승객 웹 코드에는 CSS 가져오기가 없어요. 스타일은 @hey/ui-web 안에만 있어요.' },
+            { group: ['**/*.css', '*.css'], message: '폰 웹 코드에는 CSS 가져오기가 없어요. 스타일은 @hey/ui-web 안에만 있어요.' },
             { group: ['react-dom', 'react-dom/*'], message: 'react-dom은 src/main.tsx에서만 가져와요.' },
           ],
         },
@@ -59,7 +59,7 @@ export default tseslint.config(
     rules: {
       'no-restricted-imports': [
         'error',
-        { patterns: [{ group: ['**/*.css', '*.css'], message: '승객 웹 코드에는 CSS 가져오기가 없어요.' }] },
+        { patterns: [{ group: ['**/*.css', '*.css'], message: '폰 웹 코드에는 CSS 가져오기가 없어요.' }] },
       ],
     },
   },
@@ -85,7 +85,7 @@ export default tseslint.config(
         },
         {
           selector: 'JSXOpeningElement[name.type="JSXIdentifier"][name.name=/^[a-z]/]',
-          message: '승객 웹 코드에서는 HTML 태그를 쓰지 않아요. @hey/ui-web 부품을 쓰세요.',
+          message: '폰 웹 코드에서는 HTML 태그를 쓰지 않아요. @hey/ui-web 부품을 쓰세요.',
         },
         {
           selector: 'JSXAttribute[name.name="style"]',
@@ -99,7 +99,7 @@ export default tseslint.config(
     },
   },
 
-  // Storybook 검수 도구와 DS 이야기는 위 규칙의 대상이 아니다(승객 웹 src 밖).
+  // Storybook 검수 도구와 DS 이야기는 위 규칙의 대상이 아니다(폰 웹 src 밖).
   // DS 부품 Props에서 className·style을 빼는 것은 린트가 아니라 TypeScript 인터페이스로 막는다(packages/ui-web/README.md).
   {
     files: ['**/*.stories.tsx', 'storybook/**', '.storybook/**'],

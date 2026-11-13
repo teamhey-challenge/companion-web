@@ -26,7 +26,7 @@ export const AllStates: Story = {
   render: () => (
     <Cases>
       <Case title="5분">
-        <Countdown label="기사님 승인을 기다리는 중" endsAt={Date.now() + 5 * 60_000} />
+        <Countdown label="QR 코드가 만료되기까지" endsAt={Date.now() + 5 * 60_000} />
       </Case>
       <Case title="30초 이하 (강조)">
         <Countdown label="남은 시간" endsAt={Date.now() + 20_000} />

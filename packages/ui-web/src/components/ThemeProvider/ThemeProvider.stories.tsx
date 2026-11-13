@@ -21,8 +21,8 @@ function Sample() {
       <Text variant="body" tone="muted">
         {LONG_JA}
       </Text>
-      <Banner tone="info" message="기사님이 확인하고 있어요." />
-      <Button variant="primary">{'기사님께 보내기'}</Button>
+      <Banner tone="info" message="헤이파리가 확인하고 있어요." />
+      <Button variant="primary">{'연결하기'}</Button>
     </Card>
   );
 }

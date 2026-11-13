@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 import { COPY } from '../../copy';
-import { P0 } from './P0';
+import { W1 } from './W1';
 
 const meta = {
-  title: '승객 화면/P0 QR 입장',
-  component: P0,
+  title: '폰 웹/W1 QR 입장',
+  component: W1,
   parameters: { layout: 'fullscreen', viewport: { defaultViewport: 'phone' } },
-} satisfies Meta<typeof P0>;
+} satisfies Meta<typeof W1>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

@@ -30,7 +30,7 @@ export const AllStates: Story = {
         <KeyValueRow label="하차 위치" value={LONG_JA} icon="pin" />
       </Case>
       <Case title="긴 값 (한국어 띄어쓰기 없음) + 긴 라벨">
-        <KeyValueRow label="기사님께 전달된 하차 위치 안내" value={LONG_KO} icon="flag" />
+        <KeyValueRow label="헤이파리가 지난 대화에서 기억해 둔 내용" value={LONG_KO} icon="flag" />
       </Case>
       <Case title="빈 값">
         <KeyValueRow label="영수증" value="" icon="card" />

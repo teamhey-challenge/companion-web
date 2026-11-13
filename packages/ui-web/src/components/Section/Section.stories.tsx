@@ -17,7 +17,7 @@ const body = (
   </Card>
 );
 
-export const Default: Story = { args: { title: '운행 요약', children: body } };
+export const Default: Story = { args: { title: '기억 요약', children: body } };
 
 export const LongText: Story = {
   name: '긴 제목 (일본어)',
@@ -34,7 +34,7 @@ export const AllStates: Story = {
   render: () => (
     <Cases>
       <Case title="제목만">
-        <Section title="운행 요약">{body}</Section>
+        <Section title="기억 요약">{body}</Section>
       </Case>
       <Case title="제목 + 동작">
         <Section

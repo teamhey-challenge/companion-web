@@ -1,11 +1,11 @@
-// 조립된 승객 화면 이야기를 390·360 폭에서 재고, 가로 넘침과 누름 면 겹침이 하나라도 있으면 실패한다. 허용 목록은 없다.
+// 조립된 폰 웹 이야기를 390·360 폭에서 재고, 가로 넘침과 누름 면 겹침이 하나라도 있으면 실패한다. 허용 목록은 없다.
 //
 // 사용: bun run sb:build
 //       bun scripts/serve-static.ts storybook-static 6107 127.0.0.1 &      (정적 Storybook 서버)
 //       DS_BROWSER_WS=$(ds-browser) bun run check:layout -- http://127.0.0.1:6107
 //   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): ws 주소(없으면 DS_BROWSER_WS)
-//   --langs=en,ja       어떤 언어로 그릴지(기본: 6개 승객 언어 + ko; 환경변수 LAYOUT_LANGS)
-//   --only='승객 화면'   "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 제목이 승객 화면으로 시작; 환경변수 LAYOUT_TITLE)
+//   --langs=en,ja       어떤 언어로 그릴지(기본: 지원 언어 + ko; 환경변수 LAYOUT_LANGS)
+//   --only='폰 웹'   "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 제목이 폰 웹으로 시작; 환경변수 LAYOUT_TITLE)
 //
 // 가로 넘침: (1) html·body가 뷰포트보다 넓다. (2) 어떤 요소가 뷰포트 밖으로 나가 있는데 그것을 잘라 주는 조상이 없다.
 //   (3) overflow가 visible인 요소의 내용이 자기 폭을 넘친다(scrollWidth > clientWidth).
@@ -29,7 +29,7 @@ const langs = (flag('langs') ?? process.env.LAYOUT_LANGS ?? 'en,ja,zh-Hans,zh-Ha
 // 어두운 테마는 390에서 한 번 더 잰다(색만 바뀌므로 폭 하나면 충분하다).
 const darkWidth = 390;
 const onlyFlag = flag('only');
-const titlePrefix = process.env.LAYOUT_TITLE ?? '승객 화면';
+const titlePrefix = process.env.LAYOUT_TITLE ?? '폰 웹';
 const PARALLEL = 2;
 const SETTLE_MS = 1200;
 const RECYCLE_EVERY = 25;
