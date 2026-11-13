@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hey-space-16);
+  min-width: 0;
+  border-radius: var(--hey-radius-lg);
+  border: var(--hey-border-hairline) solid transparent;
+  background: var(--hey-color-bg-raised);
+  color: var(--hey-color-fg-default);
+}
+.root[data-padding='16'] { padding: var(--hey-space-16); }
+.root[data-padding='24'] { padding: var(--hey-space-24); }
+
+.root[data-tone='default'] {
+  border-color: var(--hey-color-border-default);
+  box-shadow: var(--hey-elevation-raised);
+}
+.root[data-tone='sunken'] {
+  background: var(--hey-color-bg-sunken);
+}
+.root[data-tone='accent'] {
+  background: var(--hey-color-accent);
+  color: var(--hey-color-fg-on-accent);
+  --hey-color-fg-default: var(--hey-color-fg-on-accent);
+  --hey-color-fg-muted: var(--hey-color-fg-on-accent);
+  --hey-color-fg-subtle: var(--hey-color-fg-on-accent);
+  --hey-color-primary: var(--hey-color-fg-on-accent);
+  --hey-color-border-default: var(--hey-color-fg-on-accent);
+  --hey-color-border-strong: var(--hey-color-fg-on-accent);
+  /* 안의 기본 면(secondary 버튼 등)은 카드 면 위에서 글자색이 바뀌므로 면도 카드 색을 따라간다. */
+  --hey-color-bg-raised: transparent;
+  --hey-color-bg-sunken: transparent;
+}
+.root[data-tone='inverse'] {
+  background: var(--hey-color-bg-inverse);
+  color: var(--hey-color-fg-inverse);
+  --hey-color-fg-default: var(--hey-color-fg-inverse);
+  --hey-color-fg-muted: var(--hey-color-fg-inverse);
+  --hey-color-fg-subtle: var(--hey-color-fg-inverse);
+  --hey-color-primary: var(--hey-color-accent);
+  --hey-color-border-strong: var(--hey-color-fg-inverse);
+  --hey-color-bg-raised: transparent;
+  --hey-color-bg-sunken: transparent;
+}

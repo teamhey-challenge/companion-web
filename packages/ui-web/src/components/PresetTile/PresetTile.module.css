@@ -1,0 +1,78 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--hey-space-8);
+  width: 100%;
+  min-height: calc(var(--hey-size-touch-web) + var(--hey-space-32));
+  padding: var(--hey-space-8) var(--hey-space-16);
+  border: var(--hey-border-hairline) solid var(--hey-color-border-default);
+  border-radius: var(--hey-radius-lg);
+  background: var(--hey-color-bg-raised);
+  color: var(--hey-color-fg-default);
+  font-family: inherit;
+  font-size: var(--hey-type-label-size);
+  line-height: var(--hey-type-label-line);
+  font-weight: var(--hey-type-label-weight);
+  text-align: start;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--hey-motion-fast) var(--hey-motion-easing-standard),
+    transform var(--hey-motion-fast) var(--hey-motion-easing-standard);
+}
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hey-size-touch-web);
+  height: var(--hey-size-touch-web);
+  margin: 0;
+  border-radius: var(--hey-radius-md);
+  background: var(--hey-color-bg-sunken);
+  color: var(--hey-color-primary);
+}
+.root[data-kind='question'] .icon {
+  background: var(--hey-color-accent-container);
+}
+.label {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+.mark {
+  position: absolute;
+  top: var(--hey-space-16);
+  right: var(--hey-space-16);
+  display: inline-flex;
+  color: var(--hey-color-fg-subtle);
+}
+.mark > svg {
+  width: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+  height: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+}
+.root:active:not(:disabled) {
+  background: var(--hey-color-bg-sunken);
+  transform: scale(0.98);
+}
+.root:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: var(--hey-border-strong);
+}
+.root:disabled {
+  cursor: not-allowed;
+  color: var(--hey-color-fg-disabled);
+  background: var(--hey-color-bg-sunken);
+}
+.root:disabled .icon {
+  color: var(--hey-color-fg-disabled);
+  background: var(--hey-color-border-default);
+}
+@media (prefers-reduced-motion: reduce) {
+  .root { transition-duration: 0s; }
+  .root:active:not(:disabled) { transform: none; }
+}

@@ -1,0 +1,121 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hey-space-8);
+  min-height: var(--hey-size-touch-web);
+  padding-block: var(--hey-space-8);
+  padding-inline: var(--hey-space-16);
+  border: var(--hey-border-hairline) solid transparent;
+  border-radius: var(--hey-radius-md);
+  font-family: inherit;
+  font-size: var(--hey-type-body-strong-size);
+  line-height: var(--hey-type-body-strong-line);
+  font-weight: var(--hey-type-body-strong-weight);
+  letter-spacing: var(--hey-type-body-strong-tracking);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--hey-motion-fast) var(--hey-motion-easing-standard),
+    border-color var(--hey-motion-fast) var(--hey-motion-easing-standard),
+    transform var(--hey-motion-fast) var(--hey-motion-easing-standard);
+}
+
+.root[data-size='lg'] {
+  min-height: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  padding-inline: var(--hey-space-24);
+  border-radius: var(--hey-radius-lg);
+}
+
+.label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+.root:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: var(--hey-border-strong);
+}
+
+.root:active:not(:disabled):not([aria-disabled='true']) {
+  transform: scale(0.98);
+}
+
+/* primary */
+.root[data-variant='primary'] {
+  background: var(--hey-color-primary);
+  color: var(--hey-color-fg-on-primary);
+}
+.root[data-variant='primary']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-primary-pressed);
+}
+
+/* accent (라임) */
+.root[data-variant='accent'] {
+  background: var(--hey-color-accent);
+  color: var(--hey-color-fg-on-accent);
+}
+.root[data-variant='accent']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-accent-pressed);
+}
+
+/* secondary */
+.root[data-variant='secondary'] {
+  background: var(--hey-color-bg-raised);
+  border-color: var(--hey-color-border-strong);
+  color: var(--hey-color-fg-default);
+}
+.root[data-variant='secondary']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-bg-sunken);
+}
+
+/* ghost */
+.root[data-variant='ghost'] {
+  background: transparent;
+  color: var(--hey-color-primary);
+}
+.root[data-variant='ghost']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-bg-sunken);
+}
+
+/* danger */
+.root[data-variant='danger'] {
+  background: var(--hey-color-danger);
+  color: var(--hey-color-fg-on-primary);
+}
+.root[data-variant='danger']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-danger);
+  filter: brightness(0.88);
+}
+
+/* disabled */
+.root:disabled:not([data-loading]),
+.root[aria-disabled='true']:not([data-loading]) {
+  cursor: not-allowed;
+  background: var(--hey-color-bg-sunken);
+  border-color: transparent;
+  color: var(--hey-color-fg-disabled);
+}
+.root[data-variant='ghost']:disabled:not([data-loading]),
+.root[data-variant='ghost'][aria-disabled='true']:not([data-loading]) {
+  background: transparent;
+}
+
+/* loading: 색은 그대로, 눌리지 않는다 */
+.root[data-loading] {
+  cursor: progress;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition-duration: 0s;
+  }
+  .root:active:not(:disabled):not([aria-disabled='true']) {
+    transform: none;
+  }
+}

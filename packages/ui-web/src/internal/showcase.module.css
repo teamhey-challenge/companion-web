@@ -1,0 +1,19 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--hey-space-32) * 5), 1fr));
+  gap: var(--hey-space-16);
+  align-items: start;
+}
+.phone {
+  width: calc(var(--hey-space-32) * 11 + var(--hey-space-8));
+  height: var(--hey-sheet-max-width);
+  overflow: auto;
+  border: var(--hey-border-hairline) solid var(--hey-color-border-strong);
+  border-radius: var(--hey-radius-lg);
+  /* transform 가 fixed 자손(시트 등)의 기준을 이 틀로 옮긴다 */
+  transform: translateZ(0);
+}
+.phone:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: calc(-1 * var(--hey-border-focus));
+}

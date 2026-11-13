@@ -1,0 +1,99 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hey-space-16);
+  min-height: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  padding-block: var(--hey-space-8);
+  cursor: pointer;
+}
+.root[data-disabled] {
+  cursor: not-allowed;
+}
+.root[data-disabled] .label,
+.root[data-disabled] .description {
+  color: var(--hey-color-fg-disabled);
+}
+.root[data-disabled] .track {
+  background: var(--hey-color-bg-sunken);
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hey-space-4);
+  min-width: 0;
+}
+.label {
+  font-size: var(--hey-type-body-strong-size);
+  line-height: var(--hey-type-body-strong-line);
+  font-weight: var(--hey-type-body-strong-weight);
+  color: var(--hey-color-fg-default);
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+.description {
+  font-size: var(--hey-type-caption-size);
+  line-height: var(--hey-type-caption-line);
+  font-weight: var(--hey-type-caption-weight);
+  color: var(--hey-color-fg-muted);
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+/* 입력은 투명하지만 트랙 자리에 겹쳐 있어, 초점 고리를 입력이 직접 받는다. 줄 전체 누름은 label 이 맡는다. */
+.input {
+  appearance: none;
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  width: calc(var(--hey-space-32) + var(--hey-space-24));
+  height: var(--hey-space-32);
+  margin: 0;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: var(--hey-radius-full);
+  background: transparent;
+  cursor: inherit;
+}
+.track {
+  position: relative;
+  flex: none;
+  width: calc(var(--hey-space-32) + var(--hey-space-24));
+  height: var(--hey-space-32);
+  border-radius: var(--hey-radius-full);
+  background: var(--hey-color-border-strong);
+  transition: background-color var(--hey-motion-base) var(--hey-motion-easing-standard);
+}
+.thumb {
+  position: absolute;
+  top: var(--hey-space-4);
+  left: var(--hey-space-4);
+  width: var(--hey-space-24);
+  height: var(--hey-space-24);
+  border-radius: var(--hey-radius-full);
+  background: var(--hey-color-bg-raised);
+  box-shadow: var(--hey-elevation-raised);
+  transition: transform var(--hey-motion-base) var(--hey-motion-easing-standard);
+}
+.input:checked ~ .track {
+  background: var(--hey-color-primary);
+}
+.input:checked ~ .track .thumb {
+  transform: translateX(var(--hey-space-24));
+  background: var(--hey-color-fg-on-primary);
+}
+/* 비활성 스위치는 켜져 있어도 트랙을 회색으로 둔다(차량 HeySwitchRow 와 같다). */
+.root[data-disabled] .input:checked ~ .track {
+  background: var(--hey-color-bg-sunken);
+}
+.root[data-disabled] .input:checked ~ .track .thumb {
+  background: var(--hey-color-bg-raised);
+}
+.input:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: var(--hey-border-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .thumb { transition-duration: 0s; }
+}

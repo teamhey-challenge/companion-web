@@ -1,0 +1,7 @@
+.root {
+  display: inline-flex;
+  color: var(--hey-color-primary);
+  /* 보이지 않는 안내 글이 고리 밖으로 번지지 않게 가둔다 */
+  position: relative;
+  overflow: clip;
+}

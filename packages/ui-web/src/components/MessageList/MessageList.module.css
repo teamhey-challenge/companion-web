@@ -1,0 +1,49 @@
+.root {
+  position: relative;
+  min-width: 0;
+}
+.scroller {
+  max-height: calc(var(--hey-space-32) * 10);
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--hey-space-16);
+  border: var(--hey-border-hairline) solid var(--hey-color-border-default);
+  border-radius: var(--hey-radius-lg);
+  background: var(--hey-color-bg-surface);
+}
+.scroller:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: var(--hey-border-strong);
+}
+/* 위로 더 있으면 맨 위를 서서히 지워서, 잘린 글자가 오류가 아니라 스크롤로 읽힌다. (mask는 초점 윤곽까지 자르므로 쓰지 않는다.) */
+.root[data-cut-top='true']::before {
+  content: '';
+  position: absolute;
+  top: var(--hey-border-hairline);
+  inset-inline: var(--hey-border-hairline);
+  z-index: 1;
+  height: var(--hey-space-32);
+  border-start-start-radius: var(--hey-radius-lg);
+  border-start-end-radius: var(--hey-radius-lg);
+  background: linear-gradient(to bottom, var(--hey-color-bg-surface) var(--hey-space-8), transparent);
+  pointer-events: none;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hey-space-16);
+  min-width: 0;
+}
+.newWrap {
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--hey-space-16);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.newWrap > * {
+  pointer-events: auto;
+  box-shadow: var(--hey-elevation-overlay);
+}

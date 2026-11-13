@@ -1,0 +1,10 @@
+.root {
+  display: block;
+}
+.root[data-inset] {
+  padding-inline-start: var(--hey-space-16);
+}
+.line {
+  height: var(--hey-border-hairline);
+  background: var(--hey-color-border-default);
+}

@@ -1,0 +1,19 @@
+/* Pretendard 부분 글꼴 (scripts/build-fonts.sh 가 만든다). 토큰 패키지의 2 MB 전체 글꼴 @font-face 는
+   vite.config.ts 가 빌드에서 뺀다. 일본어·중국어와 드문 한글 음절은 글꼴 대체 목록의 시스템 글꼴이 그린다.
+   unicode-range 덕분에 브라우저는 화면에 실제로 나온 글자의 조각만 내려받는다. */
+@font-face {
+  font-family: "Pretendard";
+  src: url("./pretendard-latin.woff2") format("woff2-variations");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0100-024F, U+1EA0-1EF9, U+0131, U+0152-0153, U+2010-2027, U+2030-203A, U+20A9, U+20AC, U+2190-2193, U+2212, U+3000-303F;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("./pretendard-hangul.woff2") format("woff2-variations");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3130-318F, U+AC00-D7A3;
+}

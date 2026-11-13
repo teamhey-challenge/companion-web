@@ -1,0 +1,7 @@
+.root {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* 한 줄의 칸은 라벨이 몇 줄이든 같은 높이: 줄 높이는 가장 긴 칸을 따르고 칸이 그 높이로 늘어난다. */
+  align-items: stretch;
+  gap: var(--hey-space-8);
+}

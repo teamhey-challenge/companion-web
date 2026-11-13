@@ -1,0 +1,70 @@
+.root {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--hey-font-family);
+  overflow-wrap: anywhere;
+  line-break: strict;
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+
+.root[data-variant='display'] {
+  font-size: var(--hey-type-display-size);
+  line-height: var(--hey-type-display-line);
+  font-weight: var(--hey-type-display-weight);
+  letter-spacing: var(--hey-type-display-tracking);
+  text-wrap: balance;
+}
+.root[data-variant='title'] {
+  font-size: var(--hey-type-title-size);
+  line-height: var(--hey-type-title-line);
+  font-weight: var(--hey-type-title-weight);
+  letter-spacing: var(--hey-type-title-tracking);
+  text-wrap: balance;
+}
+.root[data-variant='heading'] {
+  font-size: var(--hey-type-heading-size);
+  line-height: var(--hey-type-heading-line);
+  font-weight: var(--hey-type-heading-weight);
+  letter-spacing: var(--hey-type-heading-tracking);
+}
+.root[data-variant='body'] {
+  font-size: var(--hey-type-body-size);
+  line-height: var(--hey-type-body-line);
+  font-weight: var(--hey-type-body-weight);
+  letter-spacing: var(--hey-type-body-tracking);
+}
+.root[data-variant='bodyStrong'] {
+  font-size: var(--hey-type-body-strong-size);
+  line-height: var(--hey-type-body-strong-line);
+  font-weight: var(--hey-type-body-strong-weight);
+  letter-spacing: var(--hey-type-body-strong-tracking);
+}
+.root[data-variant='label'] {
+  font-size: var(--hey-type-label-size);
+  line-height: var(--hey-type-label-line);
+  font-weight: var(--hey-type-label-weight);
+  letter-spacing: var(--hey-type-label-tracking);
+}
+.root[data-variant='caption'] {
+  font-size: var(--hey-type-caption-size);
+  line-height: var(--hey-type-caption-line);
+  font-weight: var(--hey-type-caption-weight);
+  letter-spacing: var(--hey-type-caption-tracking);
+}
+
+.root[data-tone='default'] { color: var(--hey-color-fg-default); }
+.root[data-tone='muted'] { color: var(--hey-color-fg-muted); }
+.root[data-tone='subtle'] { color: var(--hey-color-fg-subtle); }
+.root[data-tone='accent'] { color: var(--hey-color-primary); }
+.root[data-tone='danger'] { color: var(--hey-color-danger); }
+.root[data-tone='success'] { color: var(--hey-color-success); }
+.root[data-tone='onAccent'] { color: var(--hey-color-fg-on-accent); }
+
+.root[data-truncate] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.root[data-truncate='1'] { -webkit-line-clamp: 1; line-clamp: 1; }
+.root[data-truncate='2'] { -webkit-line-clamp: 2; line-clamp: 2; }

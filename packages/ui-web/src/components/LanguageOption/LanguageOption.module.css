@@ -1,0 +1,50 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hey-space-16);
+  width: 100%;
+  min-height: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  padding-block: var(--hey-space-8);
+  padding-inline: var(--hey-space-16);
+  border: var(--hey-border-hairline) solid var(--hey-color-border-default);
+  border-radius: var(--hey-radius-md);
+  background: var(--hey-color-bg-raised);
+  color: var(--hey-color-fg-default);
+  font-family: inherit;
+  font-size: var(--hey-type-body-strong-size);
+  line-height: var(--hey-type-body-strong-line);
+  font-weight: var(--hey-type-body-strong-weight);
+  text-align: start;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--hey-motion-fast) var(--hey-motion-easing-standard),
+    border-color var(--hey-motion-fast) var(--hey-motion-easing-standard);
+}
+.name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.check {
+  display: inline-flex;
+  flex: none;
+  width: var(--hey-size-icon-web);
+  height: var(--hey-size-icon-web);
+  color: var(--hey-color-primary);
+}
+.root[data-selected] {
+  background: var(--hey-color-accent-container);
+  border-color: var(--hey-color-primary);
+  border-width: var(--hey-border-strong);
+}
+.root:active {
+  background: var(--hey-color-bg-sunken);
+}
+.root:focus-visible {
+  outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
+  outline-offset: var(--hey-border-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  .root { transition-duration: 0s; }
+}

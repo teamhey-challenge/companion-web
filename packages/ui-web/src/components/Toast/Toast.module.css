@@ -1,0 +1,45 @@
+.positioner {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  padding-block-end: max(var(--hey-space-24), env(safe-area-inset-bottom));
+  padding-inline: var(--hey-space-16);
+  pointer-events: none;
+}
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hey-space-8);
+  max-width: var(--hey-size-content-max-web);
+  padding-block: var(--hey-space-8);
+  padding-inline: var(--hey-space-16);
+  min-height: var(--hey-size-touch-web);
+  border-radius: var(--hey-radius-md);
+  background: var(--hey-color-bg-inverse);
+  color: var(--hey-color-fg-inverse);
+  box-shadow: var(--hey-elevation-overlay);
+  font-size: var(--hey-type-label-size);
+  line-height: var(--hey-type-label-line);
+  font-weight: var(--hey-type-label-weight);
+  pointer-events: auto;
+  animation: rise var(--hey-motion-base) var(--hey-motion-easing-standard) both;
+}
+.root[data-tone='success'] > svg { color: var(--hey-color-success); }
+.root[data-tone='danger'] > svg { color: var(--hey-color-danger); }
+.root > svg {
+  flex: none;
+}
+.message {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(var(--hey-space-8)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .root { animation-duration: 0s; }
+}

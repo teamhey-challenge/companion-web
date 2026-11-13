@@ -1,0 +1,24 @@
+.root {
+  display: block;
+  flex: none;
+  border-radius: var(--hey-radius-full);
+  border-style: solid;
+  border-width: var(--hey-border-strong);
+  border-color: currentColor;
+  border-inline-end-color: transparent;
+  animation: spin calc(var(--hey-motion-slow) * 3) linear infinite;
+}
+.root[data-size='sm'] {
+  width: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+  height: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+}
+.root[data-size='md'] {
+  width: var(--hey-size-icon-web);
+  height: var(--hey-size-icon-web);
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .root { animation-duration: 0s; animation: none; opacity: 0.6; }
+}

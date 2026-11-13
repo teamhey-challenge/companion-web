@@ -1,0 +1,10 @@
+.root {
+  display: block;
+  flex: none;
+  width: var(--hey-size-icon-web);
+  height: var(--hey-size-icon-web);
+}
+.root[data-size='lg'] {
+  width: calc(var(--hey-size-icon-web) + var(--hey-space-8));
+  height: calc(var(--hey-size-icon-web) + var(--hey-space-8));
+}

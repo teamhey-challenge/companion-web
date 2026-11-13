@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.root[data-list] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.root[data-list] > li {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.root[data-gap='4'] { gap: var(--hey-space-4); }
+.root[data-gap='8'] { gap: var(--hey-space-8); }
+.root[data-gap='16'] { gap: var(--hey-space-16); }
+.root[data-gap='24'] { gap: var(--hey-space-24); }
+.root[data-gap='32'] { gap: var(--hey-space-32); }
+.root[data-align='start'] { align-items: flex-start; }
+.root[data-align='center'] { align-items: center; }

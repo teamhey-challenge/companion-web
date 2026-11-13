@@ -1,0 +1,73 @@
+.single {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hey-space-8);
+  font-size: var(--hey-type-caption-size);
+  line-height: var(--hey-type-caption-line);
+  font-weight: var(--hey-type-label-weight);
+  color: var(--hey-color-fg-muted);
+}
+.single[data-state='failed'] {
+  color: var(--hey-color-danger);
+}
+.single > svg {
+  width: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+  height: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+}
+.steps {
+  display: block;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--hey-space-4) var(--hey-space-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hey-space-4);
+  font-size: var(--hey-type-caption-size);
+  line-height: var(--hey-type-caption-line);
+  font-weight: var(--hey-type-caption-weight);
+  color: var(--hey-color-fg-subtle);
+}
+.step[data-done] {
+  color: var(--hey-color-fg-muted);
+}
+.step[data-current] {
+  color: var(--hey-color-fg-default);
+  font-weight: var(--hey-type-label-weight);
+}
+.dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+  height: calc(var(--hey-size-icon-web) - var(--hey-space-8));
+  border-radius: var(--hey-radius-full);
+  border: var(--hey-border-strong) solid var(--hey-color-border-strong);
+}
+.step[data-done] .dot {
+  border-color: var(--hey-color-primary);
+  background: var(--hey-color-primary);
+  color: var(--hey-color-fg-on-primary);
+}
+.step[data-current] .dot {
+  border-color: var(--hey-color-primary);
+  background: var(--hey-color-accent);
+  color: var(--hey-color-fg-on-accent);
+}
+.dot > svg {
+  /* 점 안쪽(16 - 테두리 2×2 = 12)에 맞춘다 */
+  width: calc(var(--hey-space-8) + var(--hey-space-4));
+  height: calc(var(--hey-space-8) + var(--hey-space-4));
+}
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

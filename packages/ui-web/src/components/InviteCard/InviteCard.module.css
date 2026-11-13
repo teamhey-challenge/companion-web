@@ -1,0 +1,15 @@
+.url {
+  display: block;
+  min-width: 0;
+  padding-block: var(--hey-space-8);
+  padding-inline: var(--hey-space-16);
+  border-radius: var(--hey-radius-md);
+  background: var(--hey-color-bg-sunken);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+.url > * {
+  white-space: nowrap;
+}

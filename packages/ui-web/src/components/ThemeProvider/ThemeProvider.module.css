@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  /* #root는 min-height만 가져 퍼센트 높이가 풀리지 않는다. 틀이 flex 자식으로 남는 높이를 채운다. */
+  flex: 1 0 auto;
+  background: var(--hey-color-bg-page);
+  color: var(--hey-color-fg-default);
+  font-family: var(--hey-font-family);
+  font-size: var(--hey-type-body-size);
+  line-height: var(--hey-type-body-line);
+  font-weight: var(--hey-type-body-weight);
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}

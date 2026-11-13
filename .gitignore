@@ -1,0 +1,9 @@
+node_modules/
+dist/
+storybook-static/
+build/
+.idea/
+.DS_Store
+.env*
+!.env.example
+.review/

@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hey-space-8);
+}
+.line {
+  display: block;
+  height: var(--hey-space-16);
+  border-radius: var(--hey-radius-sm);
+  background: var(--hey-color-bg-sunken);
+  animation: pulse calc(var(--hey-motion-slow) * 4) ease-in-out infinite;
+}
+.line[data-last] {
+  width: 60%;
+}
+@keyframes pulse {
+  50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line { animation: none; }
+}
