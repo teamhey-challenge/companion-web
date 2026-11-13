@@ -16,8 +16,8 @@ const KB = 1024;
 const BUDGET = {
   initialJsGzip: 170 * KB, // index.html 이 곧바로 싣는 JS(모듈 + modulepreload), gzip
   initialCssGzip: 20 * KB, // index.html 이 싣는 CSS, gzip
-  latinFont: 66 * KB, // 라틴 글꼴 조각(woff2 = 이미 압축). 베트남어 범위(U+0100-024F, U+1EA0-1EF9)를 더해 40.7 KB → 64.3 KB, 여유 약 2 KB
-  hangulFont: 320 * KB, // 한글 글꼴 조각(Hangul 글자가 나올 때만 내려받는다)
+  latinFont: 76 * KB, // 라틴 글꼴 조각(woff2 = 이미 압축). Chiron GoRound TC 400~700 가변 + 베트남어 범위: 68.8 KB
+  hangulFont: 410 * KB, // 한글 글꼴 조각(Hangul 글자가 나올 때만 내려받는다). Chiron GoRound TC 2,350자: 394 KB
 
 };
 
@@ -45,10 +45,10 @@ const sum = (files, f) => files.reduce((n, rel) => n + f(rel), 0);
 
 const assets = readdirSync(join(dist, 'assets'));
 const find = (re) => assets.filter((f) => re.test(f)).map((f) => `assets/${f}`);
-const latin = find(/^pretendard-latin-.*\.woff2$/);
-const hangul = find(/^pretendard-hangul-.*\.woff2$/);
+const latin = find(/^chiron-latin-.*\.woff2$/);
+const hangul = find(/^chiron-hangul-.*\.woff2$/);
 
-const fullFont = find(/^PretendardVariable-.*\.woff2$/);
+const fullFont = find(/^ChironGoRoundTC-KoreanLatin-.*\.woff2$/);
 
 const failures = [];
 const row = (name, value, budget) => {
@@ -68,7 +68,7 @@ const check = (ok, msg) => {
   if (!ok) failures.push(msg);
 };
 check(latin.length === 1 && hangul.length === 1, '글꼴 조각이 라틴 1개 + 한글 1개');
-check(fullFont.length === 0, '2 MB 전체 Pretendard 가 번들에 없음');
+check(fullFont.length === 0, '1.8 MB 전체 Chiron GoRound TC 가 번들에 없음');
 const allText = readdirSync(join(dist, 'assets')).filter((f) => /\.(js|css)$/.test(f)).map((f) => readFileSync(join(dist, 'assets', f), 'utf8')).join('\n');
 check(!/leaflet-container|_leaflet_id/.test(allText), '지도 라이브러리(Leaflet)가 번들 어디에도 없음 (폰 웹에 지도 없음, Q14)');
 
