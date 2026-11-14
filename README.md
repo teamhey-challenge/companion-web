@@ -48,5 +48,14 @@ bun run sb:build
 
 ## 링크·라이선스
 
-- 차량 앱: [companion-car](https://github.com/darren-pleos-challenge/companion-car), 서버: [companion-server](https://github.com/darren-pleos-challenge/companion-server)
+| 저장소 | 내용 |
+|---|---|
+| [companion-car](https://github.com/darren-pleos-challenge/companion-car) | 차량 앱 |
+| [companion-phone](https://github.com/darren-pleos-challenge/companion-phone) | 폰 앱(QR 연결·동의·기억 관리) |
+| [companion-server](https://github.com/darren-pleos-challenge/companion-server) | 대화·기억·TTS 서버 |
+| [companion-web](https://github.com/darren-pleos-challenge/companion-web) | 폰 웹(폰 앱의 백업)·디자인 시스템 Storybook(이 저장소) |
+| [companion-shared](https://github.com/darren-pleos-challenge/companion-shared) | 디자인 토큰·프로토콜(서브모듈 `shared/`) |
+
+공모전 제출 묶음의 일부다. 앱 이름·팀명은 아직 정해지지 않았다. APK는 차량 앱·폰 앱 저장소의 `apk/`에 있다.
+
 - 코드는 MIT(`LICENSE`). 글꼴 등 고지는 `THIRD_PARTY.md`.
