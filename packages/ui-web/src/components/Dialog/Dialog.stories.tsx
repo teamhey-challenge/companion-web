@@ -62,6 +62,7 @@ function Demo({
 }
 
 export const Default: Story = {
+  parameters: { layout: 'padded' },
   render: () => <Demo opener="연결 끊기" title="연결을 끊을까요?" message="끊으면 이 폰에서 기억을 볼 수 없어요." confirm="연결 끊기" tone="danger" />,
   play: async ({ canvasElement }) => {
     const opener = within(canvasElement).getByRole('button', { name: '나가기' });

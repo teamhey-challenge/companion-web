@@ -35,8 +35,8 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: var(--hey-size-touch-web);
-  height: var(--hey-size-touch-web);
+  width: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  height: calc(var(--hey-size-touch-web) + var(--hey-space-8));
   padding: 0;
   border: 0;
   border-radius: var(--hey-radius-md);

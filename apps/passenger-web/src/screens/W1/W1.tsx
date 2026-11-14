@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PublicPairingResponse } from '@darren-pleos-challenge/hey-protocol';
-import { AppFrame, Banner, Button, Card, CharacterImage, CheckboxRow, EmptyState, Spinner, Stack, Text, ToggleRow } from '@hey/ui-web';
+import { AppFrame, Banner, Button, Card, CharacterImage, CheckboxRow, EmptyState, Icon, Inline, Spinner, Stack, Text, ToggleRow } from '@hey/ui-web';
 import { COPY } from '../../copy';
 import { PATHS } from '../../routes';
 import type { PhoneApi } from '../../transport/api';
@@ -25,6 +25,7 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
   const [recordError, setRecordError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [declined, setDeclined] = useState(false);
   const inFlight = useRef(false);
 
   useEffect(() => {
@@ -112,24 +113,13 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
   }
 
   return (
-    <AppFrame
-      header={header}
-      footer={
-        <>
-          {failed ? <Banner tone="danger" message={COPY.pairFailed} /> : null}
-          <Button variant="ghost" size="lg" loading={submitting} disabled={!record} onClick={connect}>
-            {COPY.connect}
-          </Button>
-          <Button variant="ghost" href={PATHS.privacy} external>
-            {COPY.policy}
-          </Button>
-        </>
-      }
-    >
+    <AppFrame header={header}>
       <CharacterImage alt={load.pairing.character.name} />
-      <Text variant="body" tone="muted" as="span">
-        {COPY.pairCaption}
-      </Text>
+      <Stack gap={8} align="center">
+        <Text variant="body" tone="muted" as="span">
+          {COPY.pairCaption}
+        </Text>
+      </Stack>
       <Stack gap={16}>
         <Text variant="display" as="h1">
           {COPY.pairTitle}
@@ -137,6 +127,30 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
         <Text variant="body" tone="muted">
           {COPY.pairIntro}
         </Text>
+      </Stack>
+      <Stack gap={16}>
+        <Inline gap={16} align="start">
+          <Icon name="mic" />
+          <Stack gap={4}>
+            <Text variant="bodyStrong" as="span">
+              {COPY.guideVoiceTitle}
+            </Text>
+            <Text variant="caption" tone="muted" as="span">
+              {COPY.guideVoiceBody}
+            </Text>
+          </Stack>
+        </Inline>
+        <Inline gap={16} align="start">
+          <Icon name="book" />
+          <Stack gap={4}>
+            <Text variant="bodyStrong" as="span">
+              {COPY.guideMemoryTitle}
+            </Text>
+            <Text variant="caption" tone="muted" as="span">
+              {COPY.guideMemoryBody}
+            </Text>
+          </Stack>
+        </Inline>
       </Stack>
       <Card padding={16} tone="sunken">
         <Stack gap={8} as="ul">
@@ -151,6 +165,7 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
         </Text>
       </Card>
       <Stack gap={8}>
+        <ToggleRow label={COPY.memoryLabel} description={COPY.memoryDescription} checked={memory} onChange={setMemory} />
         <CheckboxRow
           label={COPY.recordLabel}
           checked={record}
@@ -160,7 +175,19 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
             if (v) setRecordError(false);
           }}
         />
-        <ToggleRow label={COPY.memoryLabel} description={COPY.memoryDescription} checked={memory} onChange={setMemory} />
+        <Button variant="ghost" href={PATHS.privacy} external>
+          {COPY.policy}
+        </Button>
+      </Stack>
+      <Stack gap={8}>
+        {failed ? <Banner tone="danger" message={COPY.pairFailed} /> : null}
+        {declined ? <Banner tone="info" message={COPY.declineNotice} /> : null}
+        <Button variant="ghost" size="lg" loading={submitting} disabled={!record} onClick={connect}>
+          {COPY.connect}
+        </Button>
+        <Button variant="ghost" size="lg" onClick={() => setDeclined(true)}>
+          {COPY.decline}
+        </Button>
       </Stack>
     </AppFrame>
   );
