@@ -30,10 +30,11 @@ export const COPY = {
   privacyTitle: '개인정보 처리 안내',
 
   // W2 (PRD §4.10)
-  doneTitle: '연결됐어요',
-  doneIntro: '저는 헤이파리예요. 운전하는 동안 곁에서 이야기를 나누고, 기억하고 싶은 것만 기억해요.',
-  doneNext: '차 화면의 말하기 버튼을 눌러 말을 걸어 보세요',
-  doneMemory: '기억 보기',
+  doneCaption: '당신의 이야기가 머무는 곳',
+  doneTitle: '이제, 함께해요.',
+  doneIntro: '차 안에서 나눈 이야기, 폰에서도 살펴볼 수 있어요.',
+  doneNext: '대화는 차량에서 시작해 주세요.',
+  doneMemory: '우리의 기억 보기',
   notPairedTitle: '연결이 안 돼 있어요',
   notPairedMessage: '차 화면의 QR을 다시 찍어 주세요',
 

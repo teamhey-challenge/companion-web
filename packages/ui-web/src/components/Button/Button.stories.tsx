@@ -14,7 +14,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const VARIANTS: ButtonProps['variant'][] = ['primary', 'accent', 'secondary', 'ghost', 'danger'];
+const VARIANTS: ButtonProps['variant'][] = ['primary', 'accent', 'glass', 'secondary', 'ghost', 'danger'];
 
 export const Default: Story = {
   play: async ({ canvasElement, args }) => {

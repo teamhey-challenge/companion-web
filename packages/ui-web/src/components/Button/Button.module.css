@@ -74,6 +74,20 @@
   background: var(--hey-color-bg-sunken);
 }
 
+/* glass: 작은 유리 알약(W2 시안). 색 리터럴 없이 토큰만 쓴다. */
+.root[data-variant='glass'] {
+  background: var(--hey-color-accent-container);
+  border-color: var(--hey-color-bg-raised);
+  border-radius: var(--hey-radius-full);
+  color: var(--hey-color-fg-default);
+  box-shadow: var(--hey-elevation-raised);
+  backdrop-filter: blur(var(--hey-space-8)) saturate(125%);
+  -webkit-backdrop-filter: blur(var(--hey-space-8)) saturate(125%);
+}
+.root[data-variant='glass']:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--hey-color-accent);
+}
+
 /* ghost */
 .root[data-variant='ghost'] {
   background: transparent;

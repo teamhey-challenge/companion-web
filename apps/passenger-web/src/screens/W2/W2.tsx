@@ -25,18 +25,27 @@ export function W2({ session }: W2Props) {
   return (
     <AppFrame header={header}>
       <CharacterImage alt={name} />
-      <Stack gap={16} align="center">
+      <Stack gap={8} align="center">
+        <Text variant="body" tone="muted" as="span">
+          {COPY.doneCaption}
+        </Text>
+      </Stack>
+      <Stack gap={16} align="start">
         <Text variant="display" as="h1">
           {COPY.doneTitle}
         </Text>
         <Text variant="body" tone="muted">
           {COPY.doneIntro}
         </Text>
-        <Text variant="body">{COPY.doneNext}</Text>
+        <Button variant="glass" size="lg" href={PATHS.memory}>
+          {COPY.doneMemory}
+        </Button>
       </Stack>
-      <Button variant="primary" size="lg" href={PATHS.memory}>
-        {COPY.doneMemory}
-      </Button>
+      <Stack gap={8} align="center">
+        <Text variant="body" tone="muted">
+          {COPY.doneNext}
+        </Text>
+      </Stack>
     </AppFrame>
   );
 }
