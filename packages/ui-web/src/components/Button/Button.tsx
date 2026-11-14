@@ -5,7 +5,7 @@ import styles from './Button.module.css';
 import type { Handler } from '../../handler';
 
 export interface ButtonProps {
-  variant: 'primary' | 'accent' | 'secondary' | 'ghost' | 'danger';
+  variant: 'primary' | 'accent' | 'glass' | 'secondary' | 'ghost' | 'danger';
   size?: 'md' | 'lg';
   icon?: IconName;
   loading?: boolean;
