@@ -32,9 +32,12 @@ bun run dev:web        # http://localhost:5187/p/7KQ4M9XT
 
 ## 점검
 
-CI는 두지 않는다. 로컬에서 한 번에 돌린다.
-
 ```sh
 bun run check          # lint → CSS 리터럴 → 타입 → 시험 → 번들 예산 → Storybook 빌드 → 이야기 누락
-bun run check -- --layout --a11y   # 브라우저 검사까지(ds-browser 필요)
+bun run check -- --layout --a11y   # 브라우저 검사까지(Chromium 필요)
 ```
+
+## 링크·라이선스
+
+- 차량 앱: [companion-car](https://github.com/darren-pleos-challenge/companion-car), 서버: [companion-server](https://github.com/darren-pleos-challenge/companion-server)
+- 코드는 MIT(`LICENSE`). 글꼴 등 고지는 `THIRD_PARTY.md`.
