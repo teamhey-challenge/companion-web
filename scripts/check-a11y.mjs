@@ -2,13 +2,13 @@
 //
 // 사용: bun run sb:build
 //       bun scripts/serve-static.ts storybook-static 6107 127.0.0.1 &
-//       DS_BROWSER_WS=$(ds-browser) bun run check:a11y -- http://127.0.0.1:6107
-//   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): ws 주소(없으면 DS_BROWSER_WS)
+//       bun run check:a11y -- http://127.0.0.1:6107
+//   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): 원격 브라우저 ws 주소(없으면 DS_BROWSER_WS, 그것도 없으면 이 컴퓨터의 Chromium)
 //   --langs=en,ja       어떤 언어로 그릴지(기본 en; 환경변수 A11Y_LANGS)
 //   --themes=light      어떤 테마로 그릴지(기본 light,dark; 환경변수 A11Y_THEMES)
 //   --only=폰 웹     "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 전체; 환경변수 A11Y_FILTER)
 import { createRequire } from 'node:module';
-import { chromium } from 'playwright-core';
+import { openBrowser } from './browser.mjs';
 import { openStory } from './lib/sb-nav.mjs';
 
 const require = createRequire(import.meta.url);
@@ -19,10 +19,6 @@ const flag = (name) => rawArgs.find((a) => a.startsWith(`--${name}=`))?.slice(na
 const args = rawArgs.filter((a) => !a.startsWith('--'));
 const base = (args[0] ?? 'http://127.0.0.1:6107').replace(/\/$/, '');
 const ws = args[1] ?? process.env.DS_BROWSER_WS;
-if (!ws) {
-  console.error('check:a11y: ds-browser ws 주소가 필요해요(DS_BROWSER_WS 또는 인자 2).');
-  process.exit(1);
-}
 const list = (v, d) => (v ?? d).split(',').map((s) => s.trim()).filter(Boolean);
 const langs = list(flag('langs') ?? process.env.A11Y_LANGS, 'en');
 const themes = list(flag('themes') ?? process.env.A11Y_THEMES, 'light,dark');
@@ -97,7 +93,7 @@ async function checkFocusRings(page) {
   return issues;
 }
 
-const browser = await chromium.connect(ws, { timeout: 120_000 });
+const browser = await openBrowser(ws);
 const failures = [];
 let next = 0;
 try {
