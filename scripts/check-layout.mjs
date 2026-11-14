@@ -2,8 +2,8 @@
 //
 // 사용: bun run sb:build
 //       bun scripts/serve-static.ts storybook-static 6107 127.0.0.1 &      (정적 Storybook 서버)
-//       DS_BROWSER_WS=$(ds-browser) bun run check:layout -- http://127.0.0.1:6107
-//   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): ws 주소(없으면 DS_BROWSER_WS)
+//       bun run check:layout -- http://127.0.0.1:6107
+//   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): 원격 브라우저 ws 주소(없으면 DS_BROWSER_WS, 그것도 없으면 이 컴퓨터의 Chromium)
 //   --langs=en,ja       어떤 언어로 그릴지(기본: 지원 언어 + ko; 환경변수 LAYOUT_LANGS)
 //   --only='폰 웹'   "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 제목이 폰 웹으로 시작; 환경변수 LAYOUT_TITLE)
 //
@@ -12,7 +12,7 @@
 //   스스로 잘라 보이는 요소(overflow hidden/clip/auto, 줄임표)는 (3)의 대상이 아니고, 그 안의 자식은 (2)에서 잘리는 조상을 인정한다.
 // 겹침: 보이는 누를 수 있는 요소(button, a[href], input, textarea, select, role=button|radio|switch|checkbox|tab|menuitem)
 //   둘의 상자가 1px² 넘게 겹친다. 조상-자손 관계(레이블 안의 입력)와 inert 영역 안의 요소는 제외한다.
-import { chromium } from 'playwright-core';
+import { openBrowser } from './browser.mjs';
 import { openStory } from './lib/sb-nav.mjs';
 
 const rawArgs = process.argv.slice(2).filter((a) => a !== '--');
@@ -20,10 +20,6 @@ const flag = (name) => rawArgs.find((a) => a.startsWith(`--${name}=`))?.slice(na
 const args = rawArgs.filter((a) => !a.startsWith('--'));
 const base = (args[0] ?? 'http://127.0.0.1:6107').replace(/\/$/, '');
 const ws = args[1] ?? process.env.DS_BROWSER_WS;
-if (!ws) {
-  console.error('ds-browser ws 주소가 없어요. DS_BROWSER_WS=$(ds-browser) 로 넘기거나 두 번째 인자로 주세요.');
-  process.exit(2);
-}
 const widths = [390, 360];
 const langs = (flag('langs') ?? process.env.LAYOUT_LANGS ?? 'en,ja,zh-Hans,zh-Hant,vi,th,ko').split(',').map((s) => s.trim()).filter(Boolean);
 // 어두운 테마는 390에서 한 번 더 잰다(색만 바뀌므로 폭 하나면 충분하다).
@@ -115,7 +111,7 @@ const addGroup = (width, lang, theme) => {
 for (const lang of langs) for (const width of widths) addGroup(width, lang, 'light');
 for (const lang of langs) addGroup(darkWidth, lang, 'dark');
 
-const browser = await chromium.connect(ws, { timeout: 120_000 });
+const browser = await openBrowser(ws);
 const failures = [];
 let next = 0;
 try {

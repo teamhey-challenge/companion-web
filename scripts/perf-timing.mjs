@@ -1,11 +1,11 @@
 // 모바일 느린 회선 타이밍: 빌드된 폰 웹(/c/:carCode)을 390px 폭, CPU 4배 느리게, 느린 4G 회선으로 열어
 // 탐색 타이밍 + FCP + LCP(PerformanceObserver)와 받은 바이트를 잰다. 중계 서버는 쓰지 않는다(요청을 가로채 고정 응답).
-// 사용: DS_BROWSER_WS=$(ds-browser) node scripts/perf-timing.mjs [--dist apps/passenger-web/dist] [--runs 3] [--lang ko-KR] [--shot out.png]
-//   ds-browser 연결은 최대 2개를 나눠 쓰므로 측정이 끝나면 곧바로 닫는다.
+// 사용: node scripts/perf-timing.mjs [--dist apps/passenger-web/dist] [--runs 3] [--lang ko-KR] [--shot out.png]
+//   DS_BROWSER_WS 가 있으면 그 원격 브라우저에 붙고, 없으면 이 컴퓨터의 Chromium을 띄운다.
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
-import { chromium } from 'playwright-core';
+import { openBrowser } from './browser.mjs';
 
 const arg = (name, fallback) => {
   const i = process.argv.indexOf(`--${name}`);
@@ -16,10 +16,6 @@ const runs = Number(arg('runs', '3'));
 const locale = arg('lang', 'ko-KR');
 const shot = arg('shot', undefined);
 const ws = process.env.DS_BROWSER_WS;
-if (!ws) {
-  console.error('DS_BROWSER_WS=$(ds-browser) 로 ds-browser ws 주소를 넘겨 주세요.');
-  process.exit(2);
-}
 if (!existsSync(join(dist, 'index.html'))) {
   console.error(`${dist}/index.html 이 없어요. 먼저 빌드하세요.`);
   process.exit(2);
@@ -45,7 +41,7 @@ const OBSERVE = () => {
   }).observe({ type: 'largest-contentful-paint', buffered: true });
 };
 
-const browser = await chromium.connect(ws, { timeout: 120_000 });
+const browser = await openBrowser(ws);
 const results = [];
 try {
   for (let i = 0; i < runs; i++) {

@@ -1,6 +1,6 @@
 // 로컬 점검 한 번에: lint → check:css → tsc(두 패키지) → bun test → Storybook 정적 빌드 → check:stories → (선택) check:layout, check:a11y.
 // 사용: bun run check                        브라우저 검사 제외
-//       bun run check -- --layout            마지막에 check:layout 까지(ds-browser 필요: DS_BROWSER_WS 가 없으면 `ds-browser` 로 얻는다)
+//       bun run check -- --layout            마지막에 check:layout 까지(브라우저: DS_BROWSER_WS 가 있으면 원격, 없으면 이 컴퓨터의 Chromium — 처음엔 `bunx playwright-core install chromium`)
 //       bun run check -- --a11y              check:a11y(axe, 모든 이야기 위반 0) 까지. 둘을 함께 줄 수도 있다.
 //       --langs=th,vi  --only='PresetGrid'   브라우저 검사를 언어/이야기로 좁힌다(둘 다 check:layout·check:a11y 로 그대로 넘긴다).
 import { spawn, spawnSync } from 'node:child_process';
@@ -51,25 +51,16 @@ run('check:stories', 'bun', ['run', 'check:stories']);
 
 if (withLayout || withA11y) {
   const port = process.env.LAYOUT_PORT ?? String(await freePort());
-  let ws = process.env.DS_BROWSER_WS;
-  if (!ws) {
-    const r = spawnSync('ds-browser', [], { encoding: 'utf8' });
-    ws = r.stdout?.trim();
-    if (!ws) {
-      console.error('check:layout: DS_BROWSER_WS 도 없고 ds-browser 도 실행되지 않아요.');
-      process.exit(1);
-    }
-  }
   const server = spawn('bun', ['scripts/serve-static.ts', 'storybook-static', port, '127.0.0.1'], { cwd: root, stdio: 'ignore' });
   try {
     await new Promise((r) => setTimeout(r, 1500));
     if (withLayout) {
       run('check:layout', 'bun', ['run', 'check:layout', '--', `http://127.0.0.1:${port}`, ...passthrough], {
-        env: { ...process.env, DS_BROWSER_WS: ws },
+        env: { ...process.env },
       });
     }
     if (withA11y) {
-      const env = { ...process.env, DS_BROWSER_WS: ws };
+      const env = { ...process.env };
       // 부품 이야기는 언어와 무관하므로 en으로 한 번, 조립된 폰 웹은 나머지 언어(ja, zh-Hans, zh-Hant, vi, th)로 다시 잰다.
       const narrowed = passthrough.some((a) => a.startsWith('--langs=') || a.startsWith('--only='));
       if (narrowed) {
