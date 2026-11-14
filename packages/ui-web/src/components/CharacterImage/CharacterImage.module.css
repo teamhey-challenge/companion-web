@@ -1,0 +1,24 @@
+.root {
+  align-self: center;
+  width: calc(var(--hey-space-32) * 6);
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+.root[data-state='loading'] {
+  border-radius: var(--hey-radius-full);
+  background: var(--hey-color-bg-sunken);
+  animation: pulse calc(var(--hey-motion-slow) * 4) ease-in-out infinite;
+}
+.light,
+.dark {
+  width: 100%;
+  height: auto;
+}
+.light { display: var(--hey-brand-light-display); }
+.dark { display: var(--hey-brand-dark-display); }
+@keyframes pulse {
+  50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .root[data-state='loading'] { animation: none; }
+}

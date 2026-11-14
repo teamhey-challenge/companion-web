@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@darren-pleos-challenge/hey-tokens": "file:../../shared/packages/tokens",
+    "@darren-pleos-challenge/hey-protocol": "file:../../shared/packages/protocol",
     "@hey/ui-web": "workspace:*"
   },
   "peerDependencies": {
