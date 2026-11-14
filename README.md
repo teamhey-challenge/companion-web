@@ -37,6 +37,15 @@ bun run check          # lint → CSS 리터럴 → 타입 → 시험 → 번들
 bun run check -- --layout --a11y   # 브라우저 검사까지(Chromium 필요)
 ```
 
+## 차 앱·시안 갤러리
+
+공개 Storybook 은 웹 부품·폰 웹 외에 `차 앱 부품`, `차 앱 화면`, `시안`(+ `폰 웹/시안 대조`)을 싣는다. 그림은 저장소에 두지 않고 빌드 때 `scripts/collect-gallery.ts` 가 받는다(companion-car main 의 Paparazzi 스냅샷, hey-companion-ui main 의 `artifacts/delivery-v05`). 커밋 SHA 는 이야기 아래에 적힌다. 결과(`gallery/public`, `gallery/generated`)는 gitignore 대상이다.
+
+```sh
+bun scripts/collect-gallery.ts      # gh 로그인 또는 GH_TOKEN/GH_TOKEN_FILE 필요, CAR_SHA/UI_SHA 로 커밋 고정 가능
+bun run sb:build
+```
+
 ## 링크·라이선스
 
 - 차량 앱: [companion-car](https://github.com/darren-pleos-challenge/companion-car), 서버: [companion-server](https://github.com/darren-pleos-challenge/companion-server)

@@ -13,6 +13,7 @@ export default tseslint.config(
       'storybook-static/**',
       '.review/**',
       'shared/**',
+      'gallery/generated/**',
     ],
   },
   js.configs.recommended,
