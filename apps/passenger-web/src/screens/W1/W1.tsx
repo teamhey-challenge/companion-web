@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PublicPairingResponse } from '@darren-pleos-challenge/hey-protocol';
-import { AppFrame, Banner, Button, Card, CharacterImage, CheckboxRow, EmptyState, Spinner, Stack, Text } from '@hey/ui-web';
+import { AppFrame, Banner, Button, Card, CharacterImage, CheckboxRow, EmptyState, Spinner, Stack, Text, ToggleRow } from '@hey/ui-web';
 import { COPY } from '../../copy';
 import { PATHS } from '../../routes';
 import type { PhoneApi } from '../../transport/api';
@@ -73,7 +73,7 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
   };
 
   const header = (
-    <Text variant="label" tone="muted">
+    <Text variant="heading" as="span">
       {COPY.brand}
     </Text>
   );
@@ -117,7 +117,7 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
       footer={
         <>
           {failed ? <Banner tone="danger" message={COPY.pairFailed} /> : null}
-          <Button variant="primary" size="lg" loading={submitting} disabled={!record} onClick={connect}>
+          <Button variant="ghost" size="lg" loading={submitting} disabled={!record} onClick={connect}>
             {COPY.connect}
           </Button>
           <Button variant="ghost" href={PATHS.privacy} external>
@@ -127,8 +127,11 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
       }
     >
       <CharacterImage alt={load.pairing.character.name} />
+      <Text variant="body" tone="muted" as="span">
+        {COPY.pairCaption}
+      </Text>
       <Stack gap={16}>
-        <Text variant="title" as="h1">
+        <Text variant="display" as="h1">
           {COPY.pairTitle}
         </Text>
         <Text variant="body" tone="muted">
@@ -157,7 +160,7 @@ export function W1({ pairCode, api, session, navigate }: W1Props) {
             if (v) setRecordError(false);
           }}
         />
-        <CheckboxRow label={COPY.memoryLabel} checked={memory} onChange={setMemory} />
+        <ToggleRow label={COPY.memoryLabel} description={COPY.memoryDescription} checked={memory} onChange={setMemory} />
       </Stack>
     </AppFrame>
   );
