@@ -15,8 +15,11 @@
   transition: background-color var(--hey-motion-fast) var(--hey-motion-easing-standard);
 }
 .root[data-variant='secondary'] {
+  width: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  height: calc(var(--hey-size-touch-web) + var(--hey-space-8));
+  border-color: transparent;
+  border-radius: var(--hey-radius-full);
   background: var(--hey-color-bg-raised);
-  border-color: var(--hey-color-border-strong);
 }
 .root:active:not(:disabled) {
   background: var(--hey-color-bg-sunken);

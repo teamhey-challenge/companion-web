@@ -149,7 +149,7 @@ export function W3({ api, session, onBack }: W3Props) {
   const header = (
     <Inline gap={8}>
       <IconButton icon="arrow-left" label={COPY.back} variant="secondary" onClick={onBack} />
-      <Text variant="bodyStrong" as="span">
+      <Text variant="heading" as="span">
         {COPY.brand}
       </Text>
     </Inline>
@@ -168,7 +168,7 @@ export function W3({ api, session, onBack }: W3Props) {
   return (
     <AppFrame header={header}>
       <Stack gap={8}>
-        <Text variant="title" as="h1">
+        <Text variant="display" as="h1">
           {COPY.memoryTitle}
         </Text>
         <Text variant="body" tone="muted">

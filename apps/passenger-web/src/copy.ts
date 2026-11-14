@@ -5,8 +5,9 @@ export const COPY = {
   back: '뒤로',
 
   // W1 (PRD §4.9). 동의 안내는 차 화면 C1과 같은 잠정 문구(D-22, Q-10.4-01·04 확정 전).
-  pairTitle: '차와 연결해요',
-  pairIntro: '차 화면의 QR로 들어왔어요. 아래 내용을 읽고 동의하면 연결돼요.',
+  pairCaption: '당신의 이야기가 머무는 곳',
+  pairTitle: '우리, 이야기 나눠요.',
+  pairIntro: '목소리로 대화하고, 기억하고 싶은 이야기를 함께 간직해요.',
   noticeCollect: '수집: 목소리, 대화 요약, 차량 상태',
   noticePurpose: '목적: 캐릭터와 대화, 나를 기억하기',
   noticeRetention: '보관: 내가 지우기 전까지',
@@ -16,8 +17,9 @@ export const COPY = {
     '내 목소리는 차 밖으로 나가지 않아요. 차 안에서 글자로 바뀐 뒤, 그 글자만 대화 생성을 맡은 AI 회사로 가요. 캐릭터가 하는 말의 글자는 목소리를 만드는 BreezeBlue로 가요. BreezeBlue는 이 글자와 만든 목소리를 서비스 개선·학습에 쓸 수 있고, 마지막 활동 뒤 최대 1년 보관해요.',
   recordLabel: '녹음과 음성 인식에 동의해요 (필수)',
   recordRequired: '녹음 동의가 있어야 대화할 수 있어요',
-  memoryLabel: '대화 요약을 기억으로 저장하는 데 동의해요 (선택)',
-  connect: '연결하기',
+  memoryLabel: '이야기 기억하기 · 선택',
+  memoryDescription: '대화 원문 대신 요약과 사실을 기억해요',
+  connect: '동의하고 시작하기',
   policy: '개인정보처리방침',
   pairFailed: '연결하지 못했어요. 다시 시도해 주세요',
   pairLoadFailed: '연결 정보를 불러오지 못했어요. 다시 시도해 주세요',
@@ -40,11 +42,11 @@ export const COPY = {
 
   // W3 (PRD §4.11, 기획 B F18)
   memoryTitle: '기억',
-  memoryGuide: '헤이파리가 기억하는 것이에요. 대화 원문은 저장하지 않아요.',
+  memoryGuide: '남기고 싶은 것만 남겨도 괜찮아요.',
   memoryKindFact: '사실',
   memoryKindSummary: '대화 요약',
   memoryDeleteOne: '이 기억 지우기',
-  memoryDeleteAll: '모두 지우기',
+  memoryDeleteAll: '기억 모두 지우기',
   memoryEmpty: '아직 기억한 게 없어요',
   memoryEmptyMessage: '대화하면서 헤이파리가 기억해 둘게요',
   memoryUnpaired: '연결이 끊겼어요. 차 화면의 QR을 다시 찍어 주세요',

@@ -20,7 +20,7 @@ export const Default: Story = {
     const connect = canvas.getByRole('button', { name: COPY.connect });
     await expect(connect).toBeDisabled();
     await expect(canvas.getByRole('checkbox', { name: COPY.recordLabel })).not.toBeChecked();
-    await expect(canvas.getByRole('checkbox', { name: COPY.memoryLabel })).not.toBeChecked();
+    await expect(canvas.getByRole('switch', { name: new RegExp(COPY.memoryLabel) })).not.toBeChecked();
     await userEvent.click(canvas.getByRole('checkbox', { name: COPY.recordLabel }));
     await userEvent.click(connect);
     await waitFor(() => expect(args.navigate).toHaveBeenCalledWith('/p/done'));
@@ -45,11 +45,11 @@ export const ClaimFailed: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.click(await canvas.findByRole('checkbox', { name: COPY.recordLabel }));
-    await userEvent.click(canvas.getByRole('checkbox', { name: COPY.memoryLabel }));
+    await userEvent.click(canvas.getByRole('switch', { name: new RegExp(COPY.memoryLabel) }));
     await userEvent.click(canvas.getByRole('button', { name: COPY.connect }));
     await canvas.findByText(COPY.pairFailed);
     await expect(canvas.getByRole('checkbox', { name: COPY.recordLabel })).toBeChecked();
-    await expect(canvas.getByRole('checkbox', { name: COPY.memoryLabel })).toBeChecked();
+    await expect(canvas.getByRole('switch', { name: new RegExp(COPY.memoryLabel) })).toBeChecked();
   },
 };
 
