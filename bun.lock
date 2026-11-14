@@ -30,6 +30,7 @@
       "name": "@hey/passenger-web",
       "version": "0.1.0",
       "dependencies": {
+        "@darren-pleos-challenge/hey-protocol": "file:../../shared/packages/protocol",
         "@darren-pleos-challenge/hey-tokens": "file:../../shared/packages/tokens",
         "@hey/ui-web": "workspace:*",
       },
@@ -1044,6 +1045,8 @@
     "@eslint-community/eslint-utils/eslint-visitor-keys": ["eslint-visitor-keys@3.4.3", "", {}, "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag=="],
 
     "@eslint/eslintrc/globals": ["globals@14.0.0", "", {}, "sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ=="],
+
+    "@hey/passenger-web/@darren-pleos-challenge/hey-protocol": ["@darren-pleos-challenge/hey-protocol@file:shared/packages/protocol", {}],
 
     "@hey/passenger-web/@darren-pleos-challenge/hey-tokens": ["@darren-pleos-challenge/hey-tokens@file:shared/packages/tokens", {}],
 

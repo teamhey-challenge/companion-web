@@ -20,6 +20,7 @@ export { ChipGroup, type ChipGroupProps } from './components/ChipGroup/ChipGroup
 
 export { TextField, type TextFieldProps } from './components/TextField/TextField';
 export { ToggleRow, type ToggleRowProps } from './components/ToggleRow/ToggleRow';
+export { CheckboxRow, type CheckboxRowProps } from './components/CheckboxRow/CheckboxRow';
 
 export { Card, type CardProps } from './components/Card/Card';
 export { StatusPill, type StatusPillProps } from './components/StatusPill/StatusPill';
@@ -30,6 +31,8 @@ export { Skeleton, type SkeletonProps } from './components/Skeleton/Skeleton';
 export { KeyValueRow, type KeyValueRowProps } from './components/KeyValueRow/KeyValueRow';
 export { ConnectionIndicator, type ConnectionIndicatorProps, type ConnectionStatus } from './components/ConnectionIndicator/ConnectionIndicator';
 export { Countdown, type CountdownProps } from './components/Countdown/Countdown';
+export { MemoryRow, type MemoryRowProps } from './components/MemoryRow/MemoryRow';
+export { CharacterImage, type CharacterImageProps } from './components/CharacterImage/CharacterImage';
 
 export { BottomSheet, type BottomSheetProps } from './components/BottomSheet/BottomSheet';
 export { Dialog, type DialogProps } from './components/Dialog/Dialog';

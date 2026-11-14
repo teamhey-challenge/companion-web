@@ -49,17 +49,25 @@ const SITUATIONS = {
   Toast: ['LongText'],
   Menu: ['LongText', 'Empty', 'Many'],
   TextField: ['LongText', 'Empty', 'Disabled'],
+  CheckboxRow: ['LongText', 'Disabled'],
+  MemoryRow: ['LongText', 'Disabled'],
+  CharacterImage: ['LongText', 'Loading'],
 };
 
 /**
  * 폰 웹 화면마다 상태 이야기와 주요 상호작용(play)이 있는지 본다. 화면이 늘면 여기에 적는다.
  */
 const SCREEN_STORIES = {
-  'W1 QR 입장': ['Default', 'Invalid'],
+  'W1 QR 입장': ['Default', 'Invalid', 'Expired', 'Loading', 'LoadFailed', 'ClaimFailed', 'Submitting'],
+  'W2 연결 완료': ['Default', 'NotPaired'],
+  'W3 기억 보기': ['Default', 'DeleteOne', 'DeleteAll', 'Empty', 'Loading', 'LoadFailed', 'DeleteFailed', 'Unpaired', 'SessionExpired', 'SpeechChange', 'SpeechFailed', 'Unpair'],
+  '개인정보 처리 안내': ['Default'],
 };
 /** 이 화면들의 이야기는 play 함수가 있어야 한다(주요 상호작용). */
 const SCREEN_PLAY = {
-  'W1 QR 입장': ['Default'],
+  'W1 QR 입장': ['Default', 'Expired', 'ClaimFailed'],
+  'W2 연결 완료': ['Default'],
+  'W3 기억 보기': ['Default', 'DeleteOne', 'DeleteAll', 'Empty', 'LoadFailed', 'DeleteFailed', 'Unpaired', 'SessionExpired', 'SpeechChange', 'SpeechFailed', 'Unpair'],
 };
 
 const toId = (name) => name.replace(/([a-z0-9])([A-Z])/g, '$1 $2');

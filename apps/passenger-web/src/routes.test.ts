@@ -13,7 +13,12 @@ describe('entryFromPath', () => {
     expect(entryFromPath('/p/ABC/extra')).toEqual({ kind: 'none' });
     expect(entryFromPath('/c/ABC')).toEqual({ kind: 'none' });
   });
-  test('/p/done은 입구가 아니다', () => {
-    expect(entryFromPath('/p/done')).toEqual({ kind: 'none' });
+  test('/p/done은 코드가 아니라 W2다', () => {
+    expect(entryFromPath('/p/done')).toEqual({ kind: 'done' });
+    expect(entryFromPath('/p/done/')).toEqual({ kind: 'done' });
+  });
+  test('/me/memory는 W3, /privacy는 안내다', () => {
+    expect(entryFromPath('/me/memory')).toEqual({ kind: 'memory' });
+    expect(entryFromPath('/privacy')).toEqual({ kind: 'privacy' });
   });
 });
