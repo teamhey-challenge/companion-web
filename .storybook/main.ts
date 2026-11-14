@@ -1,9 +1,18 @@
+import { existsSync } from 'node:fs';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
 
+// scripts/collect-gallery.ts 가 만든 차 앱 스냅샷·시안(커밋하지 않음). 수집 전이면 이 부분은 빈다.
+const gallery = existsSync(new URL('../gallery/generated', import.meta.url).pathname);
+
 const config: StorybookConfig = {
   framework: '@storybook/react-vite',
-  stories: ['../packages/ui-web/src/**/*.stories.tsx', '../apps/passenger-web/src/**/*.stories.tsx'],
+  stories: [
+    '../packages/ui-web/src/**/*.stories.tsx',
+    '../apps/passenger-web/src/**/*.stories.tsx',
+    ...(gallery ? ['../gallery/generated/*.stories.tsx'] : []),
+  ],
+  staticDirs: gallery ? ['../gallery/public'] : [],
   addons: [
     { name: '@storybook/addon-docs', options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } } },
     '@storybook/addon-a11y',

@@ -7,3 +7,6 @@ build/
 .env*
 !.env.example
 .review/
+gallery/public/
+gallery/generated/
+gallery/.cache/
