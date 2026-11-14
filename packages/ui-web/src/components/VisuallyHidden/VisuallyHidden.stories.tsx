@@ -18,10 +18,10 @@ export const AllStates: Story = {
   args: { children: '' },
   render: () => (
     <Cases>
-      <Case title="아이콘 옆 숨은 이름 (화면에는 아이콘만 보임, 스크린리더는 '새 요청 3건')">
+      <Case title="아이콘 옆 숨은 이름 (화면에는 아이콘만 보임, 스크린리더는 '새 기억 3개')">
         <Inline gap={8}>
           <Icon name="message" />
-          <VisuallyHidden>{'새 요청 3건'}</VisuallyHidden>
+          <VisuallyHidden>{'새 기억 3개'}</VisuallyHidden>
         </Inline>
       </Case>
       <Case title="빈 값">

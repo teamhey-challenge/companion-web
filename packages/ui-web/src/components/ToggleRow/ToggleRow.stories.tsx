@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Divider } from '../Divider/Divider';
-import { Case, Cases, LONG_JA, LONG_KO } from '../../internal/showcase';
+import { Case, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { ToggleRow } from './ToggleRow';
 
 const meta = {
@@ -21,7 +21,7 @@ export const Default: Story = { render: () => <Demo initial label="음성으로 
 
 export const LongText: Story = {
   name: '긴 라벨·설명',
-  render: () => <Demo initial={false} label={LONG_JA} description={LONG_KO} />,
+  render: () => <Demo initial={false} label={LONG_KO} description={LONG_KO_SPACED} />,
 };
 
 export const Disabled: Story = {
@@ -45,8 +45,8 @@ export const AllStates: Story = {
         <Demo initial label="자동 번역" disabled />
         <Demo initial={false} label="자동 번역" disabled />
       </Case>
-      <Case title="긴 라벨 (일본어) + 긴 설명 (한국어)">
-        <Demo initial={false} label={LONG_JA} description={LONG_KO} />
+      <Case title="긴 라벨 (띄어쓰기 없음) + 긴 설명">
+        <Demo initial={false} label={LONG_KO} description={LONG_KO_SPACED} />
       </Case>
     </Cases>
   ),

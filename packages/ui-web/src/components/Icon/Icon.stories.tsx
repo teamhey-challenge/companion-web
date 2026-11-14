@@ -8,7 +8,7 @@ import styles from './IconGallery.module.css';
 const meta = {
   title: '웹 부품/글자·브랜드/Icon',
   component: Icon,
-  args: { name: 'pin', size: 'md' },
+  args: { name: 'mic', size: 'md' },
 } satisfies Meta<typeof Icon>;
 export default meta;
 type Story = StoryObj<typeof meta>;

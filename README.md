@@ -1,15 +1,15 @@
 # companion-web
 
-차량 캐릭터 AI 컴패니언(임시 이름 `companion-*`)의 폰 웹이다. 동승자·운전자가 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(PRD W1~W3).
+차량 캐릭터 AI 컴패니언(임시 이름 `companion-*`)의 폰 웹이다. 차 안의 사람이 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(PRD W1~W3).
 
-HEY 승객 웹 `hey-passenger-web@2754655`에서 뼈대만 복사해 왔다. 택시 화면과 택시 전용 부품(요금·탑승 카드·장소 검색 등)은 모두 지웠고, 컴패니언 폰 웹(W1~W3)에 쓰는 부품만 남겼다.
+폰 웹과 디자인 시스템은 한국어 한 가지만 다룬다(다국어 코드 없음). 부품은 컴패니언 폰 웹(W1~W3)이 쓰는 것만 두고, 이야기 예시 글도 헤이파리 내용(동의·기억·말투·연결)만 쓴다.
 
 ## 지금 있는 것
 
 | 위치 | 내용 |
 |---|---|
 | `packages/ui-web` | 디자인 시스템 부품. `className`·`style`을 받지 않고, 화면은 이 부품으로만 조립한다 |
-| `apps/passenger-web` | 앱. 주소 `/p/:pairCode`를 W1(QR 입장)로 연결하는 최소 셸. 코드가 없거나 모양이 다르면 "QR을 다시 찍어 주세요" 안내 |
+| `apps/passenger-web` | 앱(폴더 이름은 배포 경로 `ops/companion-deploy/Dockerfile.web` 때문에 옛 이름 그대로). 주소 `/p/:pairCode`를 W1(QR 입장)로 연결하는 최소 셸. 코드가 없거나 모양이 다르면 "QR을 다시 찍어 주세요" 안내 |
 | `apps/passenger-web/src/transport/relayUrlGuard.ts` | 운영 빌드는 https 서버 주소(`VITE_RELAY_URL`)만 허용 |
 | `scripts/check-*.mjs` | CSS 리터럴·번들 예산·이야기 누락·레이아웃·접근성 검사 |
 | `eslint.config.js` | 화면에서 HTML 태그·style·className·글자 리터럴 금지 |

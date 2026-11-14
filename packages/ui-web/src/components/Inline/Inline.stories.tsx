@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ChoiceChip } from '../ChoiceChip/ChoiceChip';
+import { StatusPill } from '../StatusPill/StatusPill';
 import { Text } from '../Text/Text';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { Inline } from './Inline';
 
 const meta = {
@@ -11,13 +11,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const chips = ['짐 있음', '덜 걷기', '만나기로 한 입구', '실내 온도', '카드 결제', '영수증 필요', '어린이 동승'];
+const chips = ['강아지 별이', '산책 저녁 6시', '닭가슴살 간식', '비 오는 날 우산', '주말 공원', '조용한 음악', '퇴근 6시'];
 
 function Chips() {
   return (
     <>
       {chips.map((c) => (
-        <ChoiceChip key={c} label={c} selected={false} onToggle={() => undefined} />
+        <StatusPill key={c} tone="info" label={c} />
       ))}
     </>
   );
@@ -28,20 +28,20 @@ export const Default: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어)',
+  name: '긴 글 (띄어쓰기 없음)',
   args: {
     gap: 8,
     align: 'start',
     children: (
-      <Text variant="body" lang="ja">
-        {LONG_JA}
+      <Text variant="body">
+        {LONG_KO}
       </Text>
     ),
   },
 };
 
 export const Many: Story = {
-  name: '칩 많음 (줄바꿈)',
+  name: '표시 많음 (줄바꿈)',
   args: { gap: 8, wrap: true, children: <Chips /> },
 };
 
@@ -76,9 +76,9 @@ export const AllStates: Story = {
           <Text variant="body">{'가운데 정렬'}</Text>
         </Inline>
       </Case>
-      <Case title="긴 일본어 한 줄(줄임 없이 줄바꿈)">
+      <Case title="긴 한 줄(줄임 없이 줄바꿈)">
         <Inline gap={8} align="start">
-          <Text variant="body">{LONG_JA}</Text>
+          <Text variant="body">{LONG_KO}</Text>
         </Inline>
       </Case>
       <Case title="gap 4 / 16 / 24 / 32">

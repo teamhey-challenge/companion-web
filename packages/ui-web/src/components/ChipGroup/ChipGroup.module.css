@@ -1,6 +1,0 @@
-.root {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--hey-space-8);
-  min-width: 0;
-}

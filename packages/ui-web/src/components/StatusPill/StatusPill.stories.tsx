@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Case, CaseRow, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, CaseRow, Cases, LONG_KO } from '../../internal/showcase';
 import { StatusPill } from './StatusPill';
 
 const meta = {
@@ -14,7 +14,7 @@ export const Default: Story = {};
 
 const TONES = ['neutral', 'info', 'success', 'warning', 'danger', 'accent'] as const;
 
-export const LongText: Story = { name: '긴 라벨 (일본어)', args: { icon: 'info', label: LONG_JA } };
+export const LongText: Story = { name: '긴 라벨 (띄어쓰기 없음)', args: { icon: 'info', label: LONG_KO } };
 
 export const AllStates: Story = {
   name: 'All states',
@@ -34,8 +34,8 @@ export const AllStates: Story = {
           <StatusPill tone="danger" icon="error" label="어려워요" />
         </CaseRow>
       </Case>
-      <Case title="긴 라벨 (일본어)">
-        <StatusPill tone="info" icon="info" label={LONG_JA} />
+      <Case title="긴 라벨 (띄어쓰기 없음)">
+        <StatusPill tone="info" icon="info" label={LONG_KO} />
       </Case>
     </Cases>
   ),

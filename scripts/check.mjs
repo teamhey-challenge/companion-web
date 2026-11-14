@@ -2,7 +2,7 @@
 // 사용: bun run check                        브라우저 검사 제외
 //       bun run check -- --layout            마지막에 check:layout 까지(브라우저: DS_BROWSER_WS 가 있으면 원격, 없으면 이 컴퓨터의 Chromium — 처음엔 `bunx playwright-core install chromium`)
 //       bun run check -- --a11y              check:a11y(axe, 모든 이야기 위반 0) 까지. 둘을 함께 줄 수도 있다.
-//       --langs=th,vi  --only='PresetGrid'   브라우저 검사를 언어/이야기로 좁힌다(둘 다 check:layout·check:a11y 로 그대로 넘긴다).
+//       --only='PresetGrid'   브라우저 검사를 이야기로 좁힌다(check:layout·check:a11y 로 그대로 넘긴다).
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { createServer } from 'node:net';
@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const withA11y = process.argv.includes('--a11y');
 const withLayout = process.argv.includes('--layout');
-const passthrough = process.argv.slice(2).filter((a) => a.startsWith('--langs=') || a.startsWith('--only=') || a.startsWith('--themes='));
+const passthrough = process.argv.slice(2).filter((a) => a.startsWith('--only=') || a.startsWith('--themes='));
 const started = Date.now();
 
 if (!existsSync(join(root, 'shared/packages/tokens/package.json'))) {
@@ -60,17 +60,7 @@ if (withLayout || withA11y) {
       });
     }
     if (withA11y) {
-      const env = { ...process.env };
-      // 부품 이야기는 언어와 무관하므로 en으로 한 번, 조립된 폰 웹은 나머지 언어(ja, zh-Hans, zh-Hant, vi, th)로 다시 잰다.
-      const narrowed = passthrough.some((a) => a.startsWith('--langs=') || a.startsWith('--only='));
-      if (narrowed) {
-        run('check:a11y', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, ...passthrough], { env });
-      } else {
-        run('check:a11y', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`], { env: { ...env, A11Y_LANGS: process.env.A11Y_LANGS ?? 'en' } });
-        run('check:a11y 폰 웹', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, '--only=폰 웹'], {
-          env: { ...env, A11Y_LANGS: process.env.A11Y_SCREEN_LANGS ?? 'ja,zh-Hans,zh-Hant,vi,th' },
-        });
-      }
+      run('check:a11y', 'bun', ['run', 'check:a11y', '--', `http://127.0.0.1:${port}`, ...passthrough], { env: { ...process.env } });
     }
   } finally {
     server.kill();

@@ -3,7 +3,7 @@ import { expect, fn, userEvent, within } from 'storybook/test';
 import { Inline } from '../Inline/Inline';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { Case, CaseGrid, Cases, LONG_JA, LONG_KO, LONG_ZH } from '../../internal/showcase';
+import { Case, CaseGrid, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { Button, type ButtonProps } from './Button';
 
 const meta = {
@@ -60,25 +60,25 @@ export const LinkMode: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 라벨 (일본어·중국어·한국어)',
+  name: '긴 라벨 (띄어쓰기 없음·있음)',
   render: () => (
     <Cases>
       <Case title="ja">
         <Stack gap={8}>
-          <Button variant="primary">{LONG_JA}</Button>
+          <Button variant="primary">{LONG_KO}</Button>
           <Button variant="secondary" icon="send">
-            {LONG_JA}
+            {LONG_KO}
           </Button>
         </Stack>
       </Case>
       <Case title="zh-Hans">
         <Button variant="accent" size="lg">
-          {LONG_ZH}
+          {LONG_KO_SPACED}
         </Button>
       </Case>
       <Case title="ko (띄어쓰기 없음)">
         <Button variant="ghost" icon="check">
-          {LONG_KO}
+          {LONG_KO_SPACED}
         </Button>
       </Case>
       <Case title="좁은 칸 (Inline 안, 내용만큼)">

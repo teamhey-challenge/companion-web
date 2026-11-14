@@ -9,9 +9,9 @@
 3. 간격은 4·8·16·24·32만 써요(`--hey-space-*`). 부품은 바깥 여백·폭·위치를 갖지 않고, 직속 자식 사이 간격은 부모 컨테이너(`Stack`, `Inline`, `Section`)가 `gap`으로 정해요.
 4. 누를 수 있는 면은 44px 이상이에요(`--hey-size-touch-web`).
 5. 누를 수 있는 요소는 겹치지 않아요. 이동하는 단추는 `Button`의 `href`로 그려요. 링크 안에 단추를 넣지 않아요.
-6. 모든 글자는 `Text`로 그려요. 문구는 문자열 prop으로 받고, 호출하는 화면이 `t()`로 만든 값만 넘겨요. 부품 안에 UI 문구를 적지 않아요(보조 기술 이름은 prop으로 받아요).
+6. 모든 글자는 `Text`로 그려요. 문구는 문자열 prop으로 받고, 호출하는 화면이 `COPY`에서 꺼낸 값만 넘겨요. 부품 안에 UI 문구를 적지 않아요(보조 기술 이름은 prop으로 받아요).
 7. 움직임은 `prefers-reduced-motion: reduce`에서 0초 또는 없음이에요.
-8. 휴대폰 하단 시트는 `BottomSheet` 하나가 가져요. 막 32%, 반경 24, 손잡이 32×4, 위 64 띄움, 최대 폭 640, 초점 가둠, 뒤 페이지 inert, Esc 한 겹씩, 초점 복귀를 이 부품이 소유해요. `Dialog`는 같은 겹침 규약(`src/internal/useModalLayer.ts`)을 써요.
+8. 겹침(`Dialog`)은 초점 가둠, 뒤 페이지 inert, Esc 한 겹씩, 초점 복귀를 `src/internal/useModalLayer.ts` 규약으로 지켜요.
 
 ## 부품 추가하는 법
 
@@ -21,7 +21,7 @@
    - `<Name>.module.css`: 스타일. 상태는 `data-*` 속성으로 고르고, 색·길이는 `var(--hey-*)`만 써요.
    - `<Name>.stories.tsx`: 이야기. 제목은 `웹 부품/<구분>/<Name>`이에요.
 3. 이야기는 아래 상황을 모두 덮어요.
-   - 기본, 긴 글(띄어쓰기 없는 일본어·중국어 120자 이상, 긴 한국어), 빈 값, 항목 0·1·많음, 비활성, 오류, 로딩.
+   - 기본, 긴 글(띄어쓰기 없는 한국어 120자 이상, 띄어쓰기 있는 긴 한국어), 빈 값, 항목 0·1·많음, 비활성, 오류, 로딩.
    - 부품 하나당 `All states` 이야기가 있고, 변형과 상태를 한 화면에 격자로 놓아요(`src/internal/showcase.tsx`의 `Case`, `CaseGrid`).
    - 라이트·다크는 Storybook 위 도구 줄의 테마로 바꿔 봐요.
    - 동작이 있는 부품은 `play` 함수로 상호작용을 시험해요.
@@ -41,9 +41,9 @@
 
 - `useModalLayer`, `Portal`: 겹침의 접근성 계약.
 - `SpinnerRing`: 글 없는 돌아가는 고리.
-- `showcase`: 이야기 전용 칸 배치와 긴 예시 글.
+- `showcase`: 이야기 전용 칸 배치와 긴 예시 글(`LONG_KO`, `LONG_KO_SPACED`).
 
 ## 실행
 
-- Storybook: 루트에서 `bun run sb` (포트 6106), 정적 빌드는 `bun run sb:build`. 차량 화면은 `HEY_CAR_DIR`(기본 `../hey-car`)의 Paparazzi PNG에서 만들고, 없으면 안내 페이지만 나와요.
+- Storybook: 루트에서 `bun run sb` (포트 6106), 정적 빌드는 `bun run sb:build`. 차 앱 화면·시안은 `scripts/collect-gallery.ts`가 빌드 때 받아 와요(루트 README 참고).
 - 토큰은 `shared/`(hey-shared)에서 바꾸고, 거기서 `bun run tokens`로 `dist`를 다시 만든 뒤 새 태그를 서브모듈에 올려요.

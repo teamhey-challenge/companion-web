@@ -1,11 +1,11 @@
 // check:a11y / check:layout 가 함께 쓰는 Storybook 이동 도우미.
-// 이야기마다 iframe.html 을 새로 불러오면 느리고 공유 브라우저에 부담이므로, 전역값(언어·테마)과 폭이 같은 묶음은
+// 이야기마다 iframe.html 을 새로 불러오면 느리고 공유 브라우저에 부담이므로, 전역값(테마)과 폭이 같은 묶음은
 // 한 페이지에서 Storybook 채널의 setCurrentStory 로 이야기만 바꾼다. 묶음의 첫 이야기와 이동 실패 뒤 재시도만 전체 로드다.
 
 const FAIL_EVENTS = ['storyErrored', 'storyThrewException', 'playFunctionThrewException', 'storyMissing'];
 
-export const storyUrl = (base, id, lang, theme) =>
-  `${base}/iframe.html?id=${encodeURIComponent(id)}&viewMode=story&globals=lang:${encodeURIComponent(lang)};theme:${theme}`;
+export const storyUrl = (base, id, theme) =>
+  `${base}/iframe.html?id=${encodeURIComponent(id)}&viewMode=story&globals=theme:${theme}`;
 
 /** 전체 로드로 이야기를 연다. 렌더 끝(또는 오류 표시)까지 기다린다. */
 export async function loadStory(page, url) {
@@ -45,10 +45,10 @@ export async function switchStory(page, id) {
 }
 
 /**
- * 한 작업자가 가진 페이지. 같은 묶음 키(언어·테마·폭)에서 이어지는 이야기는 switchStory, 그 밖에는 loadStory.
+ * 한 작업자가 가진 페이지. 같은 묶음 키(테마·폭)에서 이어지는 이야기는 switchStory, 그 밖에는 loadStory.
  * state 는 { groupKey, id } 를 담은 작업자별 객체다.
  */
-export async function openStory(page, state, { base, id, lang, theme, groupKey }) {
+export async function openStory(page, state, { base, id, theme, groupKey }) {
   if (state.groupKey === groupKey && state.id !== id) {
     try {
       await switchStory(page, id);
@@ -63,7 +63,7 @@ export async function openStory(page, state, { base, id, lang, theme, groupKey }
     try {
       // 앞 이야기의 Storybook 이 URL 을 스스로 바꾸는 중이면 goto 가 "다른 이동에 끊겼다"고 실패한다: 빈 페이지를 거쳐 가라앉힌다.
       await page.goto('about:blank').catch(() => page.waitForTimeout(500));
-      await loadStory(page, storyUrl(base, id, lang, theme));
+      await loadStory(page, storyUrl(base, id, theme));
       state.groupKey = groupKey;
       state.id = id;
       return;

@@ -44,11 +44,8 @@ export function CaseRow({ children }: { children: ReactNode }) {
   );
 }
 
-export const LONG_JA =
-  '羽田空港第三ターミナルの国際線到着口から東京駅八重洲口まで、大きなスーツケースが二つあるので、できるだけ入口に近い場所で降ろしていただけると助かります。お支払いはクレジットカードでお願いしたいです。';
-export const LONG_ZH =
-  '请把我们送到东京站八重洲口附近的酒店门口，我们带着两个很大的行李箱，所以希望能在离入口最近的地方下车，另外请问可以刷信用卡付款吗，谢谢您的帮助和耐心等待。';
+/** 긴 글 점검용(한국어만). 띄어쓰기 없는 120자 이상, 띄어쓰기 있는 긴 문장. */
 export const LONG_KO =
-  '서울특별시강남구테헤란로152강남파이낸스센터지하2층주차장입구옆엘리베이터홀앞에서내려주시면감사하겠습니다그리고짐이많아서트렁크를열어주세요';
-export const LONG_EN =
-  'Please drop us at the side entrance of the Lotte Hotel Seoul Main Tower, the one closest to the airport limousine bus stop, because we have two very heavy suitcases.';
+  '별이는강아지이고산책을좋아하고간식은닭가슴살을제일좋아하며비가오는날에는창가에앉아서밖을구경하는것을좋아한다고어제저녁에분명히말씀해주셨던것을헤이파리가기억하고있어요그리고주말에는가족모두함께공원에간다고도하셨어요';
+export const LONG_KO_SPACED =
+  '지난주에 말씀해 주신 대로 강아지 별이는 비 오는 날 산책을 싫어하고 닭가슴살 간식을 가장 좋아해서, 헤이파리는 앞으로 비 소식이 있는 날 아침에 먼저 우산과 간식 이야기를 꺼내 볼게요.';

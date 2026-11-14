@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { CharacterImage } from './CharacterImage';
 
 const meta = {
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const LongText: Story = { name: '긴 설명', args: { alt: LONG_JA } };
+export const LongText: Story = { name: '긴 설명', args: { alt: LONG_KO } };
 
 export const Loading: Story = { name: '로딩', args: { state: 'loading' } };
 
@@ -27,7 +27,7 @@ export const AllStates: Story = {
         <CharacterImage alt="헤이파리" state="loading" />
       </Case>
       <Case title="긴 설명">
-        <CharacterImage alt={LONG_JA} />
+        <CharacterImage alt={LONG_KO} />
       </Case>
     </Cases>
   ),

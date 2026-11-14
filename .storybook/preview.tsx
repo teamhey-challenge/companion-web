@@ -2,14 +2,12 @@ import { useEffect, type ReactNode } from 'react';
 import type { Preview } from '@storybook/react-vite';
 import '../shared/packages/tokens/dist/tokens.css';
 
-const LANGS = ['en', 'ja', 'zh-Hans', 'zh-Hant', 'vi', 'th', 'ko'] as const;
-
-function Environment({ theme, lang, children }: { theme: string; lang: string; children: ReactNode }) {
+function Environment({ theme, children }: { theme: string; children: ReactNode }) {
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    root.setAttribute('lang', lang);
-  }, [theme, lang]);
+    root.setAttribute('lang', 'ko');
+  }, [theme]);
   return <>{children}</>;
 }
 
@@ -27,20 +25,11 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
-    lang: {
-      description: '문서 언어',
-      toolbar: {
-        title: '언어',
-        icon: 'globe',
-        items: LANGS.map((value) => ({ value, title: value })),
-        dynamicTitle: true,
-      },
-    },
   },
-  initialGlobals: { theme: 'light', lang: 'ko', viewport: { value: 'phone', isRotated: false } },
+  initialGlobals: { theme: 'light', viewport: { value: 'phone', isRotated: false } },
   decorators: [
     (Story, context) => (
-      <Environment theme={String(context.globals['theme'] ?? 'light')} lang={String(context.globals['lang'] ?? 'ko')}>
+      <Environment theme={String(context.globals['theme'] ?? 'light')}>
         <Story />
       </Environment>
     ),

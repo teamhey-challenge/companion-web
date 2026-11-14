@@ -3,10 +3,9 @@ import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { ConnectionIndicator } from '../ConnectionIndicator/ConnectionIndicator';
 import { Inline } from '../Inline/Inline';
-import { KeyValueRow } from '../KeyValueRow/KeyValueRow';
 import { Section } from '../Section/Section';
 import { Text } from '../Text/Text';
-import { LONG_JA, Phone } from '../../internal/showcase';
+import { LONG_KO, Phone } from '../../internal/showcase';
 import { AppFrame } from './AppFrame';
 
 const meta = {
@@ -34,11 +33,11 @@ const footer = (
 
 function Short() {
   return (
-    <Section title="목적지">
+    <Section title="헤이파리가 기억해요">
       <Card padding={16}>
-        <Text variant="heading">{'롯데호텔 서울'}</Text>
+        <Text variant="heading">{'강아지 이름은 별이야'}</Text>
         <Text variant="caption" tone="muted">
-          {'서울 중구 을지로 30'}
+          {'11월 1일에 알려 주셨어요'}
         </Text>
       </Card>
     </Section>
@@ -52,9 +51,9 @@ function Long() {
       {Array.from({ length: 8 }, (_, i) => (
         <Section key={i} title={`섹션 ${i + 1}`}>
           <Card padding={16}>
-            <KeyValueRow label="도착 예정" value="오후 3:42" icon="clock" />
-            <Text variant="body" tone="muted" lang="ja">
-              {LONG_JA}
+            <Text variant="bodyStrong">{'주말에는 공원에 가요'}</Text>
+            <Text variant="body" tone="muted">
+              {LONG_KO}
             </Text>
           </Card>
         </Section>
@@ -78,14 +77,14 @@ export const NoFooter: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어, 띄어쓰기 없음)',
+  name: '긴 글 (띄어쓰기 없음)',
   args: {
     header,
     footer,
     children: (
       <Card padding={16}>
-        <Text variant="body" lang="ja">
-          {LONG_JA}
+        <Text variant="body">
+          {LONG_KO}
         </Text>
       </Card>
     ),

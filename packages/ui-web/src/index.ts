@@ -1,7 +1,7 @@
 import '@darren-pleos-challenge/hey-tokens/tokens.css';
 import './fonts/fonts.css';
 
-export { ThemeProvider, type ThemeProviderProps, type Theme, type Lang } from './components/ThemeProvider/ThemeProvider';
+export { ThemeProvider, type ThemeProviderProps, type Theme } from './components/ThemeProvider/ThemeProvider';
 export { AppFrame, type AppFrameProps } from './components/AppFrame/AppFrame';
 export { Stack, type StackProps, type Gap } from './components/Stack/Stack';
 export { Inline, type InlineProps } from './components/Inline/Inline';
@@ -15,8 +15,6 @@ export { Icon, ICON_NAMES, type IconProps, type IconName } from './components/Ic
 export { Button, type ButtonProps } from './components/Button/Button';
 export { IconButton, type IconButtonProps } from './components/IconButton/IconButton';
 export { SegmentedControl, type SegmentedControlProps, type SegmentedOption } from './components/SegmentedControl/SegmentedControl';
-export { ChoiceChip, type ChoiceChipProps } from './components/ChoiceChip/ChoiceChip';
-export { ChipGroup, type ChipGroupProps } from './components/ChipGroup/ChipGroup';
 
 export { TextField, type TextFieldProps } from './components/TextField/TextField';
 export { ToggleRow, type ToggleRowProps } from './components/ToggleRow/ToggleRow';
@@ -28,14 +26,10 @@ export { Banner, type BannerProps } from './components/Banner/Banner';
 export { EmptyState, type EmptyStateProps } from './components/EmptyState/EmptyState';
 export { Spinner, type SpinnerProps } from './components/Spinner/Spinner';
 export { Skeleton, type SkeletonProps } from './components/Skeleton/Skeleton';
-export { KeyValueRow, type KeyValueRowProps } from './components/KeyValueRow/KeyValueRow';
 export { ConnectionIndicator, type ConnectionIndicatorProps, type ConnectionStatus } from './components/ConnectionIndicator/ConnectionIndicator';
-export { Countdown, type CountdownProps } from './components/Countdown/Countdown';
 export { MemoryRow, type MemoryRowProps } from './components/MemoryRow/MemoryRow';
 export { CharacterImage, type CharacterImageProps } from './components/CharacterImage/CharacterImage';
 
-export { BottomSheet, type BottomSheetProps } from './components/BottomSheet/BottomSheet';
 export { Dialog, type DialogProps } from './components/Dialog/Dialog';
 export { Toast, type ToastProps } from './components/Toast/Toast';
-export { Menu, type MenuProps, type MenuItem } from './components/Menu/Menu';
 

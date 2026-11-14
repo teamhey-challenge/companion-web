@@ -13,7 +13,7 @@ export interface TextFieldProps {
   disabled?: boolean;
 }
 
-/** 짧은 한 줄 글 입력(예: 만나기로 한 입구). 긴 요청은 TextComposer를 쓴다. */
+/** 짧은 한 줄 글 입력(예: 강아지 이름). 긴 요청은 TextComposer를 쓴다. */
 export function TextField({ label, value, onChange, placeholder, maxLength, disabled = false }: TextFieldProps) {
   const id = useId();
   const count = Array.from(value).length;

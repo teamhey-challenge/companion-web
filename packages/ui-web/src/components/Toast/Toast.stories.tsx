@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button/Button';
 import { Stack } from '../Stack/Stack';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { Toast } from './Toast';
 
 const meta = {
@@ -28,7 +28,7 @@ function Demo({ message, tone, label }: { message: string; tone?: 'default' | 's
 
 export const Default: Story = {};
 
-export const LongText: Story = { name: '긴 글 (일본어)', args: { open: true, message: LONG_JA } };
+export const LongText: Story = { name: '긴 글 (띄어쓰기 없음)', args: { open: true, message: LONG_KO } };
 
 export const AllStates: Story = {
   name: 'All states',
@@ -41,7 +41,7 @@ export const AllStates: Story = {
           <Demo label="기본" message="링크를 복사했어요" />
           <Demo label="성공" tone="success" message="연결됐어요" />
           <Demo label="오류" tone="danger" message="보내지 못했어요. 다시 시도해 주세요." />
-          <Demo label="긴 글" message={LONG_JA} />
+          <Demo label="긴 글" message={LONG_KO} />
         </Stack>
       </Case>
     </Cases>

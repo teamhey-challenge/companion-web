@@ -16,7 +16,7 @@ if (!existsSync(indexPath)) {
 /**
  * 부품마다 필요한 상황 이야기(내보내기 이름). docs/components.md 2절의 "상황" 열에서 해당하는 것.
  * Default·AllStates는 모든 부품에 필수다.
- *  LongText: 긴 글(띄어쓰기 없는 일본어·중국어 120자 이상) · Empty: 빈 값/0개 · Many: 항목 많음 ·
+ *  LongText: 긴 글(띄어쓰기 없는 한국어 120자 이상) · Empty: 빈 값/0개 · Many: 항목 많음 ·
  *  Disabled: 비활성 · Error: 오류·실패 · Loading: 로딩·보내는 중
  */
 const SITUATIONS = {
@@ -32,8 +32,6 @@ const SITUATIONS = {
   Button: ['LongText', 'Disabled', 'Loading'],
   IconButton: ['Disabled'],
   SegmentedControl: ['LongText'],
-  ChoiceChip: ['LongText', 'Disabled'],
-  ChipGroup: ['Empty', 'Many'],
   ToggleRow: ['LongText', 'Disabled'],
   Card: ['LongText', 'Empty'],
   StatusPill: ['LongText'],
@@ -41,13 +39,9 @@ const SITUATIONS = {
   EmptyState: ['LongText'],
   Spinner: [],
   Skeleton: [],
-  KeyValueRow: ['LongText', 'Empty'],
   ConnectionIndicator: [],
-  Countdown: [],
-  BottomSheet: ['LongText'],
   Dialog: ['LongText'],
   Toast: ['LongText'],
-  Menu: ['LongText', 'Empty', 'Many'],
   TextField: ['LongText', 'Empty', 'Disabled'],
   CheckboxRow: ['LongText', 'Disabled'],
   MemoryRow: ['LongText', 'Disabled'],

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Case, Cases, LONG_JA, LONG_KO } from '../../internal/showcase';
+import { Case, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { MemoryRow } from './MemoryRow';
 
 const meta = {
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const LongText: Story = { name: '긴 글', args: { kind: LONG_JA, text: LONG_KO } };
+export const LongText: Story = { name: '긴 글', args: { kind: LONG_KO, text: LONG_KO_SPACED } };
 
 export const Disabled: Story = { name: '비활성', args: { disabled: true } };
 
@@ -29,8 +29,8 @@ export const AllStates: Story = {
       <Case title="지우는 중 (비활성)">
         <MemoryRow kind="다가오는 일" text="금요일에 중요한 발표가 있어요." date="11월 11일" deleteLabel="이 기억 지우기" disabled onDelete={() => undefined} />
       </Case>
-      <Case title="긴 글 (일본어 분류 / 한국어 띄어쓰기 없음)">
-        <MemoryRow kind={LONG_JA} text={LONG_KO} date="11월 1일" deleteLabel="이 기억 지우기" onDelete={() => undefined} />
+      <Case title="긴 글 (띄어쓰기 없음)">
+        <MemoryRow kind={LONG_KO} text={LONG_KO_SPACED} date="11월 1일" deleteLabel="이 기억 지우기" onDelete={() => undefined} />
       </Case>
     </Cases>
   ),
