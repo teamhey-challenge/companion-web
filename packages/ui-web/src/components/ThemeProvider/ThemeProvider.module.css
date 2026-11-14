@@ -12,3 +12,6 @@
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
 }
+
+/* 한국어는 공백에서만 줄이 바뀐다("(선/택)"처럼 단어 가운데서 끊기지 않게). 일본어·중국어는 기본 규칙을 쓴다. */
+.root:lang(ko) { word-break: keep-all; }

@@ -8,6 +8,8 @@
   text-wrap: pretty;
 }
 
+.root:lang(ko) { word-break: keep-all; }
+
 .root[data-variant='display'] {
   font-size: var(--hey-type-display-size);
   line-height: var(--hey-type-display-line);
