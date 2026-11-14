@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button/Button';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { EmptyState } from './EmptyState';
 
 const meta = {
@@ -13,14 +13,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const LongText: Story = { name: '긴 글 (일본어)', args: { icon: 'warning', title: LONG_JA, message: LONG_JA } };
+export const LongText: Story = { name: '긴 글 (띄어쓰기 없음)', args: { icon: 'warning', title: LONG_KO, message: LONG_KO } };
 
 export const AllStates: Story = {
   name: 'All states',
   render: () => (
     <Cases>
       <Case title="제목만">
-        <EmptyState icon="message" title="아직 보낸 요청이 없어요" />
+        <EmptyState icon="message" title="아직 나눈 이야기가 없어요" />
       </Case>
       <Case title="제목 + 안내">
         <EmptyState icon="search" title="저장된 기억이 없어요" message="헤이파리와 이야기하면 여기에 쌓여요." />
@@ -37,8 +37,8 @@ export const AllStates: Story = {
           }
         />
       </Case>
-      <Case title="긴 글 (일본어)">
-        <EmptyState icon="warning" title={LONG_JA} message={LONG_JA} />
+      <Case title="긴 글 (띄어쓰기 없음)">
+        <EmptyState icon="warning" title={LONG_KO} message={LONG_KO} />
       </Case>
     </Cases>
   ),

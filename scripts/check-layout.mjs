@@ -4,7 +4,6 @@
 //       bun scripts/serve-static.ts storybook-static 6107 127.0.0.1 &      (정적 Storybook 서버)
 //       bun run check:layout -- http://127.0.0.1:6107
 //   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): 원격 브라우저 ws 주소(없으면 DS_BROWSER_WS, 그것도 없으면 이 컴퓨터의 Chromium)
-//   --langs=en,ja       어떤 언어로 그릴지(기본: 지원 언어 + ko; 환경변수 LAYOUT_LANGS)
 //   --only='폰 웹'   "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 제목이 폰 웹으로 시작; 환경변수 LAYOUT_TITLE)
 //
 // 가로 넘침: (1) html·body가 뷰포트보다 넓다. (2) 어떤 요소가 뷰포트 밖으로 나가 있는데 그것을 잘라 주는 조상이 없다.
@@ -21,7 +20,6 @@ const args = rawArgs.filter((a) => !a.startsWith('--'));
 const base = (args[0] ?? 'http://127.0.0.1:6107').replace(/\/$/, '');
 const ws = args[1] ?? process.env.DS_BROWSER_WS;
 const widths = [390, 360];
-const langs = (flag('langs') ?? process.env.LAYOUT_LANGS ?? 'en,ja,zh-Hans,zh-Hant,vi,th,ko').split(',').map((s) => s.trim()).filter(Boolean);
 // 어두운 테마는 390에서 한 번 더 잰다(색만 바뀌므로 폭 하나면 충분하다).
 const darkWidth = 390;
 const onlyFlag = flag('only');
@@ -105,11 +103,11 @@ function measure() {
 
 // 작업은 (폭·언어·테마) 묶음 순으로 늘어놓는다: 같은 묶음 안에서는 페이지를 다시 불러오지 않고 이야기만 바꾼다.
 const jobs = [];
-const addGroup = (width, lang, theme) => {
-  for (const e of entries) jobs.push({ id: e.id, title: `${e.title} / ${e.name}`, width, lang, theme, groupKey: `${width}|${lang}|${theme}` });
+const addGroup = (width, theme) => {
+  for (const e of entries) jobs.push({ id: e.id, title: `${e.title} / ${e.name}`, width, theme, groupKey: `${width}|${theme}` });
 };
-for (const lang of langs) for (const width of widths) addGroup(width, lang, 'light');
-for (const lang of langs) addGroup(darkWidth, lang, 'dark');
+for (const width of widths) addGroup(width, 'light');
+addGroup(darkWidth, 'dark');
 
 const browser = await openBrowser(ws);
 const failures = [];
@@ -138,7 +136,7 @@ try {
         try {
           // 이전 이야기를 위해 늘려 둔 뷰포트 높이를 되돌리고, 같은 (폭·언어·테마) 묶음이면 이야기만 바꾼다(lib/sb-nav.mjs).
           await page.setViewportSize({ width: job.width, height: 844 });
-          await openStory(page, nav, { base, id: job.id, lang: job.lang, theme: job.theme, groupKey: job.groupKey });
+          await openStory(page, nav, { base, id: job.id, theme: job.theme, groupKey: job.groupKey });
           await page.waitForTimeout(SETTLE_MS);
           // 스크롤로 고정 막대 아래에 들어간 내용이 겹침으로 잡히지 않도록, 폭은 그대로 두고 뷰포트 높이를 내용 높이까지 늘려 잰다.
           const height = await page.evaluate(() => Math.max(document.documentElement.scrollHeight, 844));
@@ -162,11 +160,11 @@ try {
 if (failures.length) {
   failures.sort((a, b) => a.title.localeCompare(b.title) || b.width - a.width);
   for (const f of failures) {
-    console.error(`FAIL ${f.title} @${f.width} lang=${f.lang} theme=${f.theme}`);
+    console.error(`FAIL ${f.title} @${f.width} theme=${f.theme}`);
     for (const line of [...new Set(f.overflow)].slice(0, 6)) console.error(`  넘침: ${line}`);
     for (const line of [...new Set(f.overlap)].slice(0, 6)) console.error(`  겹침: ${line}`);
   }
-  console.error(`check:layout failed — ${failures.length}/${jobs.length}건 (이야기 ${entries.length}개 × 폭 ${widths.join('·')} 라이트 + ${darkWidth} 다크 × 언어 ${langs.join('·')})`);
+  console.error(`check:layout failed — ${failures.length}/${jobs.length}건 (이야기 ${entries.length}개 × 폭 ${widths.join('·')} 라이트 + ${darkWidth} 다크)`);
   process.exit(1);
 }
-console.log(`check:layout ok — 이야기 ${entries.length}개 × 폭 ${widths.join('·')} 라이트 + ${darkWidth} 다크 × 언어 ${langs.join('·')} = ${jobs.length}회, 넘침·겹침 0`);
+console.log(`check:layout ok — 이야기 ${entries.length}개 × 폭 ${widths.join('·')} 라이트 + ${darkWidth} 다크 = ${jobs.length}회, 넘침·겹침 0`);

@@ -23,7 +23,7 @@ export const AllStates: Story = {
           <ConnectionIndicator status={s} labels={labels} />
         </Case>
       ))}
-      <Case title="긴 라벨 (일본어)">
+      <Case title="긴 라벨 (띄어쓰기 없음)">
         <ConnectionIndicator
           status="reconnecting"
           labels={{ ...labels, reconnecting: 'サーバーとの接続が一時的に不安定になっているため、自動的に再接続を試みています' }}

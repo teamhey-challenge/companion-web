@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Stack } from '../Stack/Stack';
-import { Case, Cases, LONG_EN, LONG_JA, LONG_KO, LONG_ZH } from '../../internal/showcase';
+import { Case, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { Text, type TextTone, type TextVariant } from './Text';
 
 const meta = {
   title: '웹 부품/글자·브랜드/Text',
   component: Text,
-  args: { variant: 'body', children: '내릴 곳까지, 같은 뜻으로.' },
+  args: { variant: 'body', children: '오늘도 같이 가요.' },
 } satisfies Meta<typeof Text>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -22,7 +22,7 @@ export const Variants: Story = {
     <Stack gap={16}>
       {VARIANTS.map((v) => (
         <Case key={v} title={v}>
-          <Text variant={v}>{'공항에서 호텔까지 가 주세요'}</Text>
+          <Text variant={v}>{'강아지 이름은 별이야'}</Text>
         </Case>
       ))}
     </Stack>
@@ -43,36 +43,22 @@ export const Tones: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어·중국어 띄어쓰기 없음 120자+)',
+  name: '긴 글 (띄어쓰기 없음 120자+)',
   render: () => (
     <Cases>
-      <Case title="ja body">
-        <Text variant="body" lang="ja">
-          {LONG_JA}
-        </Text>
+      <Case title="띄어쓰기 없음 body">
+        <Text variant="body">{LONG_KO}</Text>
       </Case>
-      <Case title="zh-Hans body">
-        <Text variant="body" lang="zh-Hans">
-          {LONG_ZH}
-        </Text>
+      <Case title="띄어쓰기 있음 body">
+        <Text variant="body">{LONG_KO_SPACED}</Text>
       </Case>
-      <Case title="ko 띄어쓰기 없음 body">
-        <Text variant="body" lang="ko">
+      <Case title="띄어쓰기 없음 display">
+        <Text variant="display">
           {LONG_KO}
         </Text>
       </Case>
-      <Case title="en body">
-        <Text variant="body" lang="en">
-          {LONG_EN}
-        </Text>
-      </Case>
-      <Case title="ja display">
-        <Text variant="display" lang="ja">
-          {LONG_JA}
-        </Text>
-      </Case>
       <Case title="한 단어 긴 URL">
-        <Text variant="body">{'https://hey.example.com/t/ABCDEFGHJKMNPQRSTUVWXYZ23456789ABCDEFGHJKMNPQRSTUVWXYZ23456789'}</Text>
+        <Text variant="body">{'https://example.com/p/ABCDEFGHJKMNPQRSTUVWXYZ23456789ABCDEFGHJKMNPQRSTUVWXYZ23456789'}</Text>
       </Case>
     </Cases>
   ),
@@ -82,19 +68,14 @@ export const Truncate: Story = {
   name: '줄임 (1줄 · 2줄)',
   render: () => (
     <Cases>
-      <Case title="truncate 1 · ja">
-        <Text variant="body" truncate={1} lang="ja">
-          {LONG_JA}
-        </Text>
-      </Case>
-      <Case title="truncate 2 · zh">
-        <Text variant="body" truncate={2} lang="zh-Hans">
-          {LONG_ZH}
-        </Text>
-      </Case>
-      <Case title="truncate 2 · ko">
-        <Text variant="body" truncate={2}>
+      <Case title="1줄 · 띄어쓰기 없음">
+        <Text variant="body" truncate={1}>
           {LONG_KO}
+        </Text>
+      </Case>
+      <Case title="2줄 · 띄어쓰기 있음">
+        <Text variant="body" truncate={2}>
+          {LONG_KO_SPACED}
         </Text>
       </Case>
       <Case title="짧은 글은 그대로">

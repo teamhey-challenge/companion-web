@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button/Button';
-import { Case, Cases, LONG_JA, LONG_KO } from '../../internal/showcase';
+import { Case, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { Banner } from './Banner';
 
 const meta = {
@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const LongText: Story = { name: '긴 글', args: { tone: 'warning', title: LONG_JA, message: LONG_KO } };
+export const LongText: Story = { name: '긴 글', args: { tone: 'warning', title: LONG_KO, message: LONG_KO_SPACED } };
 
 export const AllStates: Story = {
   name: 'All states',
@@ -26,7 +26,7 @@ export const AllStates: Story = {
           <Banner
             tone={tone}
             title="다시 시도해 주세요"
-            message="요청을 보내지 못했어요."
+            message="기억을 불러오지 못했어요."
             action={
               <Button variant="secondary" icon="refresh">
                 {'다시 보내기'}
@@ -35,9 +35,9 @@ export const AllStates: Story = {
           />
         </Case>
       ))}
-      <Case title="긴 글 (일본어 / 한국어 띄어쓰기 없음)">
-        <Banner tone="warning" title={LONG_JA} message={LONG_JA} />
-        <Banner tone="danger" message={LONG_KO} />
+      <Case title="긴 글 (띄어쓰기 없음)">
+        <Banner tone="warning" title={LONG_KO} message={LONG_KO} />
+        <Banner tone="danger" message={LONG_KO_SPACED} />
       </Case>
     </Cases>
   ),

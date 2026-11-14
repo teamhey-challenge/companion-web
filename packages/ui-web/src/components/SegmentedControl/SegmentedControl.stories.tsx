@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import { Case, Cases, LONG_JA, LONG_KO } from '../../internal/showcase';
+import { Case, Cases, LONG_KO, LONG_KO_SPACED } from '../../internal/showcase';
 import { SegmentedControl } from './SegmentedControl';
 
 const meta = {
@@ -42,15 +42,15 @@ export const Default: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 라벨 (일본어·한국어)',
+  name: '긴 라벨 (띄어쓰기 없음)',
   args: { options: three, value: 'a', onChange: () => undefined, label: '긴 라벨' },
   render: () => (
     <Demo
       label="긴 라벨"
       initial="a"
       options={[
-        { value: 'a', label: LONG_JA.slice(0, 40) },
-        { value: 'b', label: LONG_KO.slice(0, 30) },
+        { value: 'a', label: LONG_KO.slice(0, 40) },
+        { value: 'b', label: LONG_KO_SPACED.slice(0, 30) },
         { value: 'c', label: 'Almost there' },
       ]}
     />
@@ -92,8 +92,8 @@ export const AllStates: Story = {
           label="긴 라벨"
           initial="a"
           options={[
-            { value: 'a', label: LONG_JA.slice(0, 40) },
-            { value: 'b', label: LONG_KO.slice(0, 30) },
+            { value: 'a', label: LONG_KO.slice(0, 40) },
+            { value: 'b', label: LONG_KO_SPACED.slice(0, 30) },
             { value: 'c', label: 'Almost there' },
           ]}
         />

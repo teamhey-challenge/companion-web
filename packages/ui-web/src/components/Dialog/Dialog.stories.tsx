@@ -4,7 +4,7 @@ import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { Dialog } from './Dialog';
 
 const meta = {
@@ -84,8 +84,8 @@ export const Default: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어)',
-  render: () => <Demo opener="긴 글 대화상자" title={LONG_JA} message={LONG_JA} confirm="확인" startOpen />,
+  name: '긴 글 (띄어쓰기 없음)',
+  render: () => <Demo opener="긴 글 대화상자" title={LONG_KO} message={LONG_KO} confirm="확인" startOpen />,
 };
 
 export const AllStates: Story = {

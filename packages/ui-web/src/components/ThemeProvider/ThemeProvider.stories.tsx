@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { ThemeProvider } from './ThemeProvider';
 
 const meta = {
@@ -17,9 +17,9 @@ type Story = StoryObj<typeof meta>;
 function Sample() {
   return (
     <Card padding={16}>
-      <Text variant="heading">{'羽田空港 → 東京駅'}</Text>
+      <Text variant="heading">{'헤이파리와 이야기해요'}</Text>
       <Text variant="body" tone="muted">
-        {LONG_JA}
+        {LONG_KO}
       </Text>
       <Banner tone="info" message="헤이파리가 확인하고 있어요." />
       <Button variant="primary">{'연결하기'}</Button>
@@ -28,30 +28,23 @@ function Sample() {
 }
 
 export const Default: Story = {
-  args: { theme: 'light', lang: 'ko', children: <Sample /> },
+  args: { theme: 'light', children: <Sample /> },
 };
 
 export const AllStates: Story = {
   name: 'All states',
-  args: { theme: 'light', lang: 'ko' },
+  args: { theme: 'light' },
   render: () => (
     <Cases>
-      <Case title="light / ko">
-        <ThemeProvider theme="light" lang="ko">
+      <Case title="라이트">
+        <ThemeProvider theme="light">
           <Stack gap={16}>
             <Sample />
           </Stack>
         </ThemeProvider>
       </Case>
-      <Case title="dark / ja">
-        <ThemeProvider theme="dark" lang="ja">
-          <Stack gap={16}>
-            <Sample />
-          </Stack>
-        </ThemeProvider>
-      </Case>
-      <Case title="light / zh-Hans">
-        <ThemeProvider theme="light" lang="zh-Hans">
+      <Case title="다크">
+        <ThemeProvider theme="dark">
           <Stack gap={16}>
             <Sample />
           </Stack>

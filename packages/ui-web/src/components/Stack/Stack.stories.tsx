@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card } from '../Card/Card';
 import { Inline } from '../Inline/Inline';
 import { Text } from '../Text/Text';
-import { Case, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, Cases, LONG_KO } from '../../internal/showcase';
 import { Stack, type Gap } from './Stack';
 
 const meta = {
@@ -32,12 +32,12 @@ export const Default: Story = {
 };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어)',
+  name: '긴 글 (띄어쓰기 없음)',
   args: {
     gap: 8,
     children: (
-      <Text variant="body" lang="ja">
-        {LONG_JA}
+      <Text variant="body">
+        {LONG_KO}
       </Text>
     ),
   },
@@ -95,9 +95,9 @@ export const AllStates: Story = {
       </Case>
       <Case title="긴 글 안">
         <Stack gap={8}>
-          <Text variant="body">{LONG_JA}</Text>
+          <Text variant="body">{LONG_KO}</Text>
           <Inline gap={8}>
-            <Text variant="body">{LONG_JA}</Text>
+            <Text variant="body">{LONG_KO}</Text>
           </Inline>
         </Stack>
       </Case>

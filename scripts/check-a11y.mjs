@@ -4,7 +4,6 @@
 //       bun scripts/serve-static.ts storybook-static 6107 127.0.0.1 &
 //       bun run check:a11y -- http://127.0.0.1:6107
 //   인자 1: 정적 Storybook 주소(기본 http://127.0.0.1:6107)   인자 2(선택): 원격 브라우저 ws 주소(없으면 DS_BROWSER_WS, 그것도 없으면 이 컴퓨터의 Chromium)
-//   --langs=en,ja       어떤 언어로 그릴지(기본 en; 환경변수 A11Y_LANGS)
 //   --themes=light      어떤 테마로 그릴지(기본 light,dark; 환경변수 A11Y_THEMES)
 //   --only=폰 웹     "제목 / 이야기 이름" 에 이 문자열이 들어 있는 이야기만(기본 전체; 환경변수 A11Y_FILTER)
 import { createRequire } from 'node:module';
@@ -20,7 +19,6 @@ const args = rawArgs.filter((a) => !a.startsWith('--'));
 const base = (args[0] ?? 'http://127.0.0.1:6107').replace(/\/$/, '');
 const ws = args[1] ?? process.env.DS_BROWSER_WS;
 const list = (v, d) => (v ?? d).split(',').map((s) => s.trim()).filter(Boolean);
-const langs = list(flag('langs') ?? process.env.A11Y_LANGS, 'en');
 const themes = list(flag('themes') ?? process.env.A11Y_THEMES, 'light,dark');
 const only = flag('only') ?? process.env.A11Y_FILTER ?? '';
 const PARALLEL = 2;
@@ -40,7 +38,7 @@ if (entries.length === 0) {
 }
 
 const jobs = [];
-for (const lang of langs) for (const theme of themes) for (const e of entries) jobs.push({ id: e.id, title: `${e.title} / ${e.name}`, lang, theme, groupKey: `${lang}|${theme}` });
+for (const theme of themes) for (const e of entries) jobs.push({ id: e.id, title: `${e.title} / ${e.name}`, theme, groupKey: theme });
 
 // 키보드 Tab 으로 이야기의 모든 초점 대상을 차례로 돌며, 초점을 받은 요소 자신이 고리를 그리는지 잰다.
 //  - 자신의 outline(또는 box-shadow)이 있어야 한다. 부모 :focus-within 이 대신 그리면 안 된다.
@@ -120,7 +118,7 @@ try {
         try {
           // 이야기가 아무것도 그리지 않는 경우(빈 목록 따위)도 있어, 뿌리 자식이 아니라 Storybook 의 렌더 끝 표시를 기다린다.
           // 같은 언어·테마 묶음 안에서는 페이지를 다시 불러오지 않고 이야기만 바꾼다(lib/sb-nav.mjs).
-          await openStory(page, nav, { base, id: job.id, lang: job.lang, theme: job.theme, groupKey: job.groupKey });
+          await openStory(page, nav, { base, id: job.id, theme: job.theme, groupKey: job.groupKey });
           await page.waitForTimeout(SETTLE_MS);
           if (!(await page.evaluate(() => typeof window.axe !== 'undefined'))) await page.addScriptTag({ path: axePath });
           // 조립된 화면은 문서 전체를, 부품 이야기는 이야기 뿌리만 잰다. 부품 조각에는 페이지 수준 규칙 region 이 뜻이 없어 끈다.
@@ -180,7 +178,7 @@ try {
 if (failures.length) {
   failures.sort((a, b) => a.title.localeCompare(b.title));
   for (const f of failures) {
-    console.error(`FAIL ${f.title} lang=${f.lang} theme=${f.theme}`);
+    console.error(`FAIL ${f.title} theme=${f.theme}`);
     for (const v of f.violations) {
       console.error(`  ${v.id} (${v.impact}): ${v.help}`);
       for (const n of v.nodes.slice(0, 4)) console.error(`    ${n.target} — ${n.summary}`);
@@ -191,4 +189,4 @@ if (failures.length) {
   console.error(`\ncheck:a11y 실패 — ${failures.length}/${jobs.length}회에서 위반. 규칙별: ${[...byRule].map(([k, c]) => `${k}×${c}`).join(', ')}`);
   process.exit(1);
 }
-console.log(`check:a11y ok — 이야기 ${entries.length}개 × 언어 ${langs.join('·')} × 테마 ${themes.join('·')} = ${jobs.length}회, axe 위반 0`);
+console.log(`check:a11y ok — 이야기 ${entries.length}개 × 테마 ${themes.join('·')} = ${jobs.length}회, axe 위반 0`);

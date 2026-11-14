@@ -45,7 +45,7 @@ export function App() {
 
   const entry = entryFromPath(path);
   return (
-    <ThemeProvider theme={theme} lang="ko">
+    <ThemeProvider theme={theme}>
       {entry.kind === 'pair' ? <W1 pairCode={entry.code} api={api} session={session} navigate={navigate} /> : null}
       {entry.kind === 'none' ? <W1 pairCode={null} api={api} session={session} navigate={navigate} /> : null}
       {entry.kind === 'done' ? <W2 session={session} /> : null}

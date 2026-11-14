@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button/Button';
-import { KeyValueRow } from '../KeyValueRow/KeyValueRow';
 import { StatusPill } from '../StatusPill/StatusPill';
 import { Text } from '../Text/Text';
-import { Case, CaseGrid, Cases, LONG_JA } from '../../internal/showcase';
+import { Case, CaseGrid, Cases, LONG_KO } from '../../internal/showcase';
 import { Card } from './Card';
 
 const meta = { title: '웹 부품/표시/Card', component: Card, args: { padding: 16 } } satisfies Meta<typeof Card>;
@@ -13,11 +12,11 @@ type Story = StoryObj<typeof meta>;
 function Content() {
   return (
     <>
-      <Text variant="heading">{'롯데호텔 서울'}</Text>
+      <Text variant="heading">{'강아지 이름은 별이야'}</Text>
       <Text variant="body" tone="muted">
-        {'서울 중구 을지로 30'}
+        {'11월 1일에 알려 주셨어요'}
       </Text>
-      <KeyValueRow label="도착 예정" value="오후 3:42" icon="clock" />
+      <StatusPill tone="success" icon="check" label="기억하는 중" />
       <Button variant="secondary">{'자세히'}</Button>
     </>
   );
@@ -26,8 +25,8 @@ function Content() {
 export const Default: Story = { args: { children: <Content /> } };
 
 export const LongText: Story = {
-  name: '긴 글 (일본어)',
-  args: { children: <Text variant="body">{LONG_JA}</Text> },
+  name: '긴 글 (띄어쓰기 없음)',
+  args: { children: <Text variant="body">{LONG_KO}</Text> },
 };
 
 export const Empty: Story = { name: '내용 없음', args: { children: null } };
@@ -57,10 +56,10 @@ export const AllStates: Story = {
           ))}
         </CaseGrid>
       </Case>
-      <Case title="긴 글 (일본어)">
+      <Case title="긴 글 (띄어쓰기 없음)">
         <Card padding={16}>
           <StatusPill tone="info" label="연결 확인 중" />
-          <Text variant="body">{LONG_JA}</Text>
+          <Text variant="body">{LONG_KO}</Text>
         </Card>
       </Case>
       <Case title="내용 없음">
