@@ -50,7 +50,7 @@
 }
 .input:checked ~ .box .mark { opacity: 1; }
 .input[aria-invalid] ~ .box { border-color: var(--hey-color-danger); }
-.input:focus-visible ~ .box {
+.input:focus-visible {
   outline: var(--hey-border-focus) solid var(--hey-color-focus-ring);
   outline-offset: var(--hey-border-strong);
 }

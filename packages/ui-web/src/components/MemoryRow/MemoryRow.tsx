@@ -24,7 +24,7 @@ export function MemoryRow({ kind, text, date, deleteLabel, disabled = false, onD
         {date ? <span className={styles.date}>{date}</span> : null}
       </div>
       <button className={styles.delete} type="button" aria-label={deleteLabel} title={deleteLabel} disabled={disabled} onClick={onDelete}>
-        <Icon name="trash" />
+        <Icon name="trash" size="lg" />
       </button>
     </div>
   );

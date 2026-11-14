@@ -4,7 +4,7 @@ export const ICON_NAMES = [
   'arrow-left', 'arrow-right', 'check', 'close', 'chevron-down', 'chevron-right', 'search', 'pin', 'flag',
   'door', 'luggage', 'thermometer-cool', 'thermometer-warm', 'car', 'clock', 'route', 'toll',
   'speaker', 'message', 'send', 'user', 'users', 'globe', 'menu', 'info', 'warning', 'error', 'refresh',
-  'qr', 'card', 'plus', 'minus', 'link', 'logout', 'music', 'quiet', 'trash',
+  'qr', 'card', 'plus', 'minus', 'link', 'logout', 'music', 'quiet', 'trash', 'mic', 'book',
 ] as const;
 
 export type IconName = (typeof ICON_NAMES)[number];
@@ -161,6 +161,18 @@ export const ICON_SHAPES: Record<IconName, ReactNode> = {
     <>
       <path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13" />
       <path d="M10 11v5.5m4-5.5v5.5" />
+    </>
+  ),
+  mic: (
+    <>
+      <rect x="9" y="3.500" width="6" height="11" rx="3" />
+      <path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" />
+    </>
+  ),
+  book: (
+    <>
+      <path d="M6 4.500h11.500v15H7.500A1.500 1.500 0 0 1 6 18Z" />
+      <path d="M6 18a1.500 1.500 0 0 1 1.500-1.500h10M10 4.500v6l1.500-1 1.500 1v-6" />
     </>
   ),
 };
