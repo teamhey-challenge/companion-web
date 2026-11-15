@@ -1,28 +1,38 @@
 # companion-web
 
-차량 캐릭터 AI 컴패니언(앱 Hey, 캐릭터 헤이리, 팀 Team Hey. 저장소 이름 `companion-*`은 그대로)의 폰 웹이다. 차 안의 사람이 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(PRD W1~W3).
+앱 이름 **Hey**(캐릭터 헤이리), 팀 **Team Hey**. 저장소 이름 `companion-*`은 그대로다.
 
-폰 웹과 디자인 시스템은 한국어 한 가지만 다룬다(다국어 코드 없음). 부품은 컴패니언 폰 웹(W1~W3)이 쓰는 것만 두고, 이야기 예시 글도 헤이리 내용(동의·기억·말투·연결)만 쓴다.
+차량 캐릭터 AI 컴패니언의 **폰 웹**(폰 앱의 백업)과 웹 디자인 시스템·Storybook 저장소다. 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(W1~W3). 한국어 한 가지만 다룬다.
 
-## 지금 있는 것
+## 제출물과 주소
+
+- 서버: https://hey.lastmile.ltd/api, 폰 웹: https://hey.lastmile.ltd/ , Storybook: https://hey.lastmile.ltd/storybook/
+- APK는 이 저장소에 없다. 차량 앱은 companion-car `apk/TeamHey_Hey_release.apk`(https://hey.lastmile.ltd/download/latest.apk), 폰 앱은 companion-phone `apk/TeamHey_Hey-phone_release.apk`(https://hey.lastmile.ltd/download/phone/latest.apk).
+- 심사자 에뮬레이터의 차 등록에는 등록 비밀 파일이 필요하다. 팀이 요청 시 전달하며 방법은 companion-car README에 있다.
+
+## 테스트 환경
+
+Bun 1.4 이상(CI는 1.4.2), TypeScript 5.9, Vite. 브라우저 검사(`--layout --a11y`)에는 Chromium이 필요하다. 이 저장소는 Pleos SDK(Vehicle·NaviHelper·SpeechToText·TextToSpeech)를 쓰지 않는다. 차량 앱이 쓴다. 폰 웹은 마이크 오디오와 좌표를 다루지 않는다(음성 인식은 차량의 Pleos 온디바이스 STT).
+
+## 구성
 
 | 위치 | 내용 |
 |---|---|
 | `packages/ui-web` | 디자인 시스템 부품. `className`·`style`을 받지 않고, 화면은 이 부품으로만 조립한다 |
-| `apps/passenger-web` | 앱(폴더 이름은 배포 경로 `ops/companion-deploy/Dockerfile.web` 때문에 옛 이름 그대로). 주소 `/p/:pairCode`를 W1(QR 입장)로 연결하는 최소 셸. 코드가 없거나 모양이 다르면 "QR을 다시 찍어 주세요" 안내 |
+| `apps/passenger-web` | 폰 웹 앱(폴더 이름은 배포 경로 때문에 옛 이름 그대로). `/p/:pairCode`가 W1(QR 입장·동의) → W2(연결 완료) → W3(기억·말투·연결 해제)로 이어진다. 코드가 없거나 모양이 다르면 "QR을 다시 찍어 주세요" 안내 |
 | `apps/passenger-web/src/transport/relayUrlGuard.ts` | 운영 빌드는 https 서버 주소(`VITE_RELAY_URL`)만 허용 |
 | `scripts/check-*.mjs` | CSS 리터럴·번들 예산·이야기 누락·레이아웃·접근성 검사 |
 | `eslint.config.js` | 화면에서 HTML 태그·style·className·글자 리터럴 금지 |
-| `shared/` | `companion-shared` v0.1.0 서브모듈(디자인 토큰) |
+| `shared/` | `companion-shared` 서브모듈(디자인 토큰) |
 
-W1~W3의 동의·연결·기억 화면과 서버 연동은 이후 작업이다. 이 저장소의 W1은 주소의 코드를 보여 주는 자리까지만 한다.
+W1~W3 화면은 서버의 페어링·동의·기억 API와 연결된다.
 
-패키지 이름(`@hey/ui-web`, `@darren-pleos-challenge/hey-*`)은 앱 이름이 확정될 때까지 바꾸지 않는다.
+패키지 이름(`@hey/ui-web`, `hey-*` 토큰·프로토콜 패키지)은 앱 이름이 확정될 때까지 바꾸지 않는다.
 
 ## 시작
 
 ```sh
-git clone --recurse-submodules git@github.com:teamhey-challenge/companion-web.git
+git clone --recurse-submodules https://github.com/teamhey-challenge/companion-web.git
 cd companion-web
 nice -n 19 bun install
 bun run dev:web        # http://localhost:5187/p/7KQ4M9XT
