@@ -1,11 +1,12 @@
 # companion-web
 
-Hey 폰 웹과 웹 디자인 시스템 Storybook.
+Hey 랜딩 페이지, 폰 웹, 웹 디자인 시스템.
 
 Hey는 차 안에서 말을 걸고 나를 기억하는 캐릭터 AI 컴패니언(캐릭터 헤이리)이고, 만든 팀은 Team Hey다. 이 저장소에는 폰 앱의 백업인 **폰 웹**과, 화면을 조립하는 **웹 디자인 시스템**이 있다. 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다. 한국어만 지원한다.
 
-- 폰 웹: https://hey.lastmile.ltd/
-- Storybook(웹 부품, 차 앱 부품·화면, 시안): https://hey.lastmile.ltd/storybook/
+- 랜딩: https://hey.lastmile.ltd/
+- 폰 웹은 공개 주소로 서비스하지 않는다. 차 QR·친구 초대 링크(`/p/:code`, `/f/:code`)는 폰 앱이 열고, 앱이 없을 때만 설치 안내 페이지가 보인다.
+- Storybook은 로컬에서만 연다(`bun run sb`).
 
 ## 구성
 
