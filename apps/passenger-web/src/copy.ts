@@ -1,7 +1,7 @@
 /** 폰 웹 문구. 화면 코드에는 글자 리터럴을 두지 않고 여기서 가져온다(린트 규칙). 다국어 카탈로그는 공유 저장소에 생기면 옮긴다. */
 export const COPY = {
-  brand: '헤이파리',
-  characterName: '헤이파리',
+  brand: 'Hey',
+  characterName: '헤이리',
   back: '뒤로',
 
   // W1 (PRD §4.9). 동의 안내는 차 화면 C1과 같은 잠정 문구(D-22, Q-10.4-01·04 확정 전).
@@ -54,7 +54,7 @@ export const COPY = {
   memoryDeleteOne: '이 기억 지우기',
   memoryDeleteAll: '기억 모두 지우기',
   memoryEmpty: '아직 기억한 게 없어요',
-  memoryEmptyMessage: '대화하면서 헤이파리가 기억해 둘게요',
+  memoryEmptyMessage: '대화하면서 헤이리가 기억해 둘게요',
   memoryUnpaired: '연결이 끊겼어요. 차 화면의 QR을 다시 찍어 주세요',
   memoryLoadFailed: '불러오지 못했어요',
   memoryDeleteFailed: '지우지 못했어요. 다시 시도해 주세요',

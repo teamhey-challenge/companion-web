@@ -20,7 +20,7 @@ const labels = { online: '연결됨', reconnecting: '다시 연결하는 중', o
 
 const header = (
   <Inline gap={16} justify="between">
-    <Text variant="label" tone="muted">{'헤이파리'}</Text>
+    <Text variant="label" tone="muted">{'헤이리'}</Text>
     <ConnectionIndicator status="online" labels={labels} />
   </Inline>
 );
@@ -33,7 +33,7 @@ const footer = (
 
 function Short() {
   return (
-    <Section title="헤이파리가 기억해요">
+    <Section title="헤이리가 기억해요">
       <Card padding={16}>
         <Text variant="heading">{'강아지 이름은 별이야'}</Text>
         <Text variant="caption" tone="muted">

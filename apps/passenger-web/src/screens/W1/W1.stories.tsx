@@ -30,7 +30,7 @@ export const Default: Story = {
 export const Invalid: Story = { args: { pairCode: null } };
 
 export const Expired: Story = {
-  args: { api: fakeApi({ getPairing: () => Promise.resolve({ status: 'unknown', character: { name: '헤이파리', bodyColor: 0 } }) }) },
+  args: { api: fakeApi({ getPairing: () => Promise.resolve({ status: 'unknown', character: { name: '헤이리', bodyColor: 0 } }) }) },
   play: async ({ canvasElement }) => {
     await within(canvasElement).findByText(COPY.invalidTitle);
   },

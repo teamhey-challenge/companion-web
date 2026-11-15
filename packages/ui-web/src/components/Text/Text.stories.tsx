@@ -35,7 +35,7 @@ export const Tones: Story = {
     <Stack gap={8}>
       {TONES.map((t) => (
         <Text key={t} variant="bodyStrong" tone={t}>
-          {`tone ${t} — 헤이파리가 확인했어요`}
+          {`tone ${t} — 헤이리가 확인했어요`}
         </Text>
       ))}
     </Stack>

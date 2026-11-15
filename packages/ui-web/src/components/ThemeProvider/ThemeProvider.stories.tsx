@@ -17,11 +17,11 @@ type Story = StoryObj<typeof meta>;
 function Sample() {
   return (
     <Card padding={16}>
-      <Text variant="heading">{'헤이파리와 이야기해요'}</Text>
+      <Text variant="heading">{'헤이리와 이야기해요'}</Text>
       <Text variant="body" tone="muted">
         {LONG_KO}
       </Text>
-      <Banner tone="info" message="헤이파리가 확인하고 있어요." />
+      <Banner tone="info" message="헤이리가 확인하고 있어요." />
       <Button variant="primary">{'연결하기'}</Button>
     </Card>
   );

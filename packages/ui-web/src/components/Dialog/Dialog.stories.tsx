@@ -94,8 +94,8 @@ export const AllStates: Story = {
   render: () => (
     <Cases>
       <Case title="기본 / 위험">
-        <Demo opener="기본 대화상자" title="기억을 저장할까요?" message="헤이파리가 다음 대화부터 기억해요." confirm="저장하기" />
-        <Demo opener="위험 대화상자" title="기억을 모두 지울까요?" message="지우면 헤이파리가 지난 대화를 잊어요." confirm="모두 지우기" tone="danger" />
+        <Demo opener="기본 대화상자" title="기억을 저장할까요?" message="헤이리가 다음 대화부터 기억해요." confirm="저장하기" />
+        <Demo opener="위험 대화상자" title="기억을 모두 지울까요?" message="지우면 헤이리가 지난 대화를 잊어요." confirm="모두 지우기" tone="danger" />
       </Case>
     </Cases>
   ),

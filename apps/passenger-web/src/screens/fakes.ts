@@ -14,8 +14,8 @@ const never = <T>() => new Promise<T>(() => undefined);
 
 export function fakeApi(over: Partial<PhoneApi> = {}): PhoneApi {
   return {
-    getPairing: () => Promise.resolve({ status: 'pending', character: { name: '헤이파리', bodyColor: 0 } }),
-    claim: () => Promise.resolve({ phoneToken: 'fake', character: { name: '헤이파리', bodyColor: 0 } }),
+    getPairing: () => Promise.resolve({ status: 'pending', character: { name: '헤이리', bodyColor: 0 } }),
+    claim: () => Promise.resolve({ phoneToken: 'fake', character: { name: '헤이리', bodyColor: 0 } }),
     listMemory: () => Promise.resolve(SAMPLE_MEMORY),
     deleteMemory: () => Promise.resolve(),
     deleteAllMemory: () => Promise.resolve(),
@@ -35,6 +35,6 @@ export function memorySession(token: string | null): Session {
     setItem: (k, v) => void data.set(k, v),
     removeItem: (k) => void data.delete(k),
   });
-  if (token) s.save(token, { name: '헤이파리', bodyColor: 0 });
+  if (token) s.save(token, { name: '헤이리', bodyColor: 0 });
   return s;
 }
