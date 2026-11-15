@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { PublicPairingResponse } from '@darren-pleos-challenge/hey-protocol';
+import type { PublicPairingResponse } from '@teamhey/hey-protocol';
 import { AppFrame, Banner, Button, Card, CharacterImage, CheckboxRow, EmptyState, Icon, Inline, Spinner, Stack, Text, ToggleRow } from '@hey/ui-web';
 import { COPY } from '../../copy';
 import { PATHS } from '../../routes';

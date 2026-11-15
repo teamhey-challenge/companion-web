@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { MemoryItem, Settings, SpeechStyle } from '@darren-pleos-challenge/hey-protocol';
+import type { MemoryItem, Settings, SpeechStyle } from '@teamhey/hey-protocol';
 import {
   AppFrame,
   Banner,
@@ -37,7 +37,7 @@ const formatDate = (iso: string): string => {
 
 const isUnauthorized = (e: unknown): boolean => e instanceof ApiError && (e.status === 401 || e.status === 403);
 
-/** W3 기억 보기·삭제와 폰 설정(PRD §4.11, 기획 B F18: 말투·연결 해제). 개인 API 키는 MVP 밖(D-26). */
+/** W3 기억 보기·삭제와 폰 설정(PRD §4.11, 기획 B F18: 말투·연결 해제). 개인 API 키는 MVP 밖. */
 export function W3({ api, session, onBack }: W3Props) {
   const token = session.getToken();
   const [list, setList] = useState<List>(token ? { kind: 'loading' } : { kind: 'unpaired' });

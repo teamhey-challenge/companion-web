@@ -23,7 +23,7 @@ jobs:
           printf '%s\n' "$SHARED_SSH_KEY" > ~/.ssh/shared_key
           chmod 600 ~/.ssh/shared_key
           ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
-          GIT_SSH_COMMAND='ssh -i ~/.ssh/shared_key -o IdentitiesOnly=yes' git submodule update --init --depth=1
+          GIT_SSH_COMMAND='ssh -i ~/.ssh/shared_key -o IdentitiesOnly=yes' git -c url.git@github.com:.insteadOf=https://github.com/ submodule update --init --depth=1
           rm -f ~/.ssh/shared_key
       - uses: oven-sh/setup-bun@v2
         with:

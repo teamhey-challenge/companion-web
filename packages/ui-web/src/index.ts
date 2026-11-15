@@ -1,4 +1,4 @@
-import '@darren-pleos-challenge/hey-tokens/tokens.css';
+import '@teamhey/hey-tokens/tokens.css';
 import './fonts/fonts.css';
 
 export { ThemeProvider, type ThemeProviderProps, type Theme } from './components/ThemeProvider/ThemeProvider';
