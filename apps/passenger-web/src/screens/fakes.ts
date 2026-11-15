@@ -1,4 +1,4 @@
-import type { MemoryItem, Settings } from '@darren-pleos-challenge/hey-protocol';
+import type { MemoryItem, Settings } from '@teamhey/hey-protocol';
 import { ApiError, type PhoneApi } from '../transport/api';
 import { createSession, type Session } from '../transport/session';
 

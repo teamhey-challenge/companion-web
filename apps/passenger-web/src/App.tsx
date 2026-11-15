@@ -8,7 +8,7 @@ import { Privacy } from './screens/Privacy/Privacy';
 import { API_BASE, createPhoneApi } from './transport/api';
 import { createSession } from './transport/session';
 
-/** 시스템 화면 모드(prefers-color-scheme)를 따른다(D-26). 바뀌면 바로 따라간다. */
+/** 시스템 화면 모드(prefers-color-scheme)를 따른다. 바뀌면 바로 따라간다. */
 function useSystemTheme(): Theme {
   const query = '(prefers-color-scheme: dark)';
   const [dark, setDark] = useState(() => window.matchMedia(query).matches);

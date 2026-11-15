@@ -1,4 +1,4 @@
-import type { CharacterInfo } from '@darren-pleos-challenge/hey-protocol';
+import type { CharacterInfo } from '@teamhey/hey-protocol';
 
 const TOKEN_KEY = 'hey.phoneToken';
 const CHARACTER_KEY = 'hey.character';

@@ -6,7 +6,7 @@ import type {
   Settings,
   SettingsPatch,
   MemoryItem,
-} from '@darren-pleos-challenge/hey-protocol';
+} from '@teamhey/hey-protocol';
 
 /** 서버 요청이 실패했다. status 0은 네트워크 실패. */
 export class ApiError extends Error {
