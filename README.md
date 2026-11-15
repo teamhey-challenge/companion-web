@@ -22,7 +22,7 @@ W1~W3의 동의·연결·기억 화면과 서버 연동은 이후 작업이다. 
 ## 시작
 
 ```sh
-git clone --recurse-submodules git@github.com:darren-pleos-challenge/companion-web.git
+git clone --recurse-submodules git@github.com:teamhey-challenge/companion-web.git
 cd companion-web
 nice -n 19 bun install
 bun run dev:web        # http://localhost:5187/p/7KQ4M9XT
@@ -50,11 +50,11 @@ bun run sb:build
 
 | 저장소 | 내용 |
 |---|---|
-| [companion-car](https://github.com/darren-pleos-challenge/companion-car) | 차량 앱 |
-| [companion-phone](https://github.com/darren-pleos-challenge/companion-phone) | 폰 앱(QR 연결·동의·기억 관리) |
-| [companion-server](https://github.com/darren-pleos-challenge/companion-server) | 대화·기억·TTS 서버 |
-| [companion-web](https://github.com/darren-pleos-challenge/companion-web) | 폰 웹(폰 앱의 백업)·디자인 시스템 Storybook(이 저장소) |
-| [companion-shared](https://github.com/darren-pleos-challenge/companion-shared) | 디자인 토큰·프로토콜(서브모듈 `shared/`) |
+| [companion-car](https://github.com/teamhey-challenge/companion-car) | 차량 앱 |
+| [companion-phone](https://github.com/teamhey-challenge/companion-phone) | 폰 앱(QR 연결·동의·기억 관리) |
+| [companion-server](https://github.com/teamhey-challenge/companion-server) | 대화·기억·TTS 서버 |
+| [companion-web](https://github.com/teamhey-challenge/companion-web) | 폰 웹(폰 앱의 백업)·디자인 시스템 Storybook(이 저장소) |
+| [companion-shared](https://github.com/teamhey-challenge/companion-shared) | 디자인 토큰·프로토콜(서브모듈 `shared/`) |
 
 공모전 제출 묶음의 일부다. 앱 Hey(캐릭터 헤이파리), 팀 Team Hey. APK는 차량 앱·폰 앱 저장소의 `apk/`에 있다.
 

@@ -17,7 +17,7 @@ const GALLERY = join(ROOT, 'gallery');
 const PUBLIC = join(GALLERY, 'public');
 const GENERATED = join(GALLERY, 'generated');
 const CACHE = join(GALLERY, '.cache');
-const ORG = 'darren-pleos-challenge';
+const ORG = 'teamhey-challenge';
 const MAX_WIDTH = 1600;
 const UI_DIR = 'artifacts/delivery-v05/';
 
