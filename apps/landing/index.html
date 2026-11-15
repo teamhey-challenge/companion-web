@@ -43,6 +43,15 @@ footer p{word-break:keep-all}
 .hero img{order:2;width:min(100%,420px);justify-self:end}
 .feats{grid-template-columns:repeat(4,1fr)}
 }
+@media(max-width:480px){
+.wrap{padding:0 20px}
+.hero{padding:32px 0 32px;gap:24px}
+.hero img{width:min(78%,300px)}
+.btns{flex-direction:column;gap:10px;margin-top:24px}
+.btn{width:100%}
+.lead{font-size:17px}
+footer a{display:inline-block;padding:10px 0}
+}
 </style>
 </head>
 <body>
@@ -55,7 +64,7 @@ footer p{word-break:keep-all}
       <div class="btns">
         <a class="btn primary" href="/download/latest.apk">차 앱 APK</a>
         <a class="btn primary" href="/download/phone/latest.apk">폰 앱 APK</a>
-        <a class="btn" href="/studio/">디자인 스튜디오</a>
+        <a class="btn" href="/storybook/">Storybook</a>
       </div>
     </div>
     <img src="/landing/heyri.webp" width="640" height="640" alt="비니를 쓴 반투명 캐릭터 헤이리가 손을 흔드는 모습" fetchpriority="high">
