@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hey — 나를 기억하고 내 차를 아는, 차에 사는 친구 헤이리</title>
+<meta name="description" content="Hey는 운전하는 시간을 혼자가 아닌 시간으로 바꾸는 차량용 AI 친구 헤이리입니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hey — 차에 사는 친구 헤이리">
+<meta property="og:description" content="나를 기억하고 내 차를 아는, 차에 사는 친구 헤이리">
+<meta property="og:image" content="https://hey.lastmile.ltd/landing/og.jpg">
+<meta property="og:url" content="https://hey.lastmile.ltd/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/landing/heyri.webp" type="image/webp">
+<link rel="preload" href="/landing/chiron-hangul.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Chiron GoRound TC";src:url("/landing/chiron-latin.woff2") format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0020-007E,U+00A0-00FF,U+0100-024F,U+2010-2027,U+2190-2193,U+3000-303F}
+@font-face{font-family:"Chiron GoRound TC";src:url("/landing/chiron-hangul.woff2") format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+3130-318F,U+AC00-D7A3}
+:root{--bg:#f0f8fb;--surface:#f8fcfe;--raised:#fff;--fg:#243f50;--muted:#456070;--border:#cbdfe8;--accent:#a9d7ec;--accent-c:#d8edf7;--primary:#244e67;--primary-p:#31637d;--on-primary:#f5fbfe;--secondary:#d9e8f6;--focus:#326b92}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Chiron GoRound TC",system-ui,-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.hero{display:grid;gap:28px;align-items:center;padding:48px 0 40px}
+.hero img{width:min(100%,320px);aspect-ratio:1;border-radius:36px;justify-self:center;box-shadow:0 12px 40px #244e6724}
+.name{font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+h1{font-size:clamp(30px,6.4vw,48px);line-height:1.25;font-weight:700;margin:6px 0 14px;word-break:keep-all}
+.lead{font-size:18px;color:var(--muted);max-width:30em;word-break:keep-all}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:26px;font-weight:700;font-size:16px;text-decoration:none;background:var(--secondary);color:var(--fg);border:1px solid var(--border)}
+.btn:hover{background:#c5dced}
+.btn.primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.btn.primary:hover{background:var(--primary-p)}
+.feats{list-style:none;padding:0;display:grid;gap:14px;grid-template-columns:1fr;margin:8px 0 56px}
+.feats li{background:var(--raised);border:1px solid var(--border);border-radius:20px;padding:20px 22px}
+.feats b{display:block;font-size:18px;margin-bottom:4px}
+.feats span{color:var(--muted);font-size:15px;word-break:keep-all}
+footer{border-top:1px solid var(--border);background:var(--surface);padding:24px 0 32px;font-size:14px;color:var(--muted)}
+footer p{word-break:keep-all}
+@media(min-width:760px){
+.hero{grid-template-columns:1.15fr 1fr;padding:88px 0 64px;gap:56px}
+.hero img{order:2;width:min(100%,420px)}
+.feats{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="name">Hey</p>
+      <h1>나를 기억하고 내 차를 아는,<br>차에 사는 친구 헤이리</h1>
+      <p class="lead">운전하는 시간을 혼자가 아닌 시간으로 바꾸는 차량용 AI 캐릭터입니다.</p>
+      <div class="btns">
+        <a class="btn primary" href="/download/latest.apk">차 앱 APK</a>
+        <a class="btn primary" href="/download/phone/latest.apk">폰 앱 APK</a>
+        <a class="btn" href="/studio/">디자인 스튜디오</a>
+      </div>
+    </div>
+    <img src="/landing/heyri.webp" width="640" height="640" alt="비니를 쓴 반투명 캐릭터 헤이리가 손을 흔드는 모습" fetchpriority="high">
+  </section>
+  <ul class="feats">
+    <li><b>기억하고 먼저 말 걸기</b><span>지난 대화를 기억하고, 필요한 순간에 헤이리가 먼저 말을 겁니다.</span></li>
+    <li><b>차를 아는 한마디</b><span>충전·연료 같은 차량 상태를 알고 상황에 맞게 한마디 건넵니다.</span></li>
+    <li><b>친구에게 말 전하기</b><span>운전 중에도 목소리로 친구에게 메시지를 전하고 받아 읽어 줍니다.</span></li>
+    <li><b>내리면 일기</b><span>내리면 오늘 함께 다닌 길이 폰에 짧은 일기로 남습니다.</span></li>
+  </ul>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Team Hey · 현대자동차그룹 차량용 앱 개발 공모전 출품작 · <a href="/privacy">개인정보 처리방침</a></p>
+  </div>
+</footer>
+</body>
+</html>
