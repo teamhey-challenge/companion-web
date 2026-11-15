@@ -5,7 +5,7 @@ import { CharacterImage } from './CharacterImage';
 const meta = {
   title: '웹 부품/표시/CharacterImage',
   component: CharacterImage,
-  args: { alt: '헤이파리' },
+  args: { alt: '헤이리' },
 } satisfies Meta<typeof CharacterImage>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,10 +21,10 @@ export const AllStates: Story = {
   render: () => (
     <Cases>
       <Case title="준비됨 (라이트는 청록, 다크는 복숭아)">
-        <CharacterImage alt="헤이파리" />
+        <CharacterImage alt="헤이리" />
       </Case>
       <Case title="로딩">
-        <CharacterImage alt="헤이파리" state="loading" />
+        <CharacterImage alt="헤이리" state="loading" />
       </Case>
       <Case title="긴 설명">
         <CharacterImage alt={LONG_KO} />

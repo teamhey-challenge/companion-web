@@ -1,8 +1,8 @@
 # companion-web
 
-차량 캐릭터 AI 컴패니언(앱 Hey, 캐릭터 헤이파리, 팀 Team Hey. 저장소 이름 `companion-*`은 그대로)의 폰 웹이다. 차 안의 사람이 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(PRD W1~W3).
+차량 캐릭터 AI 컴패니언(앱 Hey, 캐릭터 헤이리, 팀 Team Hey. 저장소 이름 `companion-*`은 그대로)의 폰 웹이다. 차 안의 사람이 차 화면의 QR을 폰 카메라로 찍으면 `/p/:pairCode`가 열리고, 여기서 녹음·기억 저장에 동의해 차와 연결한다(PRD W1~W3).
 
-폰 웹과 디자인 시스템은 한국어 한 가지만 다룬다(다국어 코드 없음). 부품은 컴패니언 폰 웹(W1~W3)이 쓰는 것만 두고, 이야기 예시 글도 헤이파리 내용(동의·기억·말투·연결)만 쓴다.
+폰 웹과 디자인 시스템은 한국어 한 가지만 다룬다(다국어 코드 없음). 부품은 컴패니언 폰 웹(W1~W3)이 쓰는 것만 두고, 이야기 예시 글도 헤이리 내용(동의·기억·말투·연결)만 쓴다.
 
 ## 지금 있는 것
 
@@ -56,6 +56,6 @@ bun run sb:build
 | [companion-web](https://github.com/teamhey-challenge/companion-web) | 폰 웹(폰 앱의 백업)·디자인 시스템 Storybook(이 저장소) |
 | [companion-shared](https://github.com/teamhey-challenge/companion-shared) | 디자인 토큰·프로토콜(서브모듈 `shared/`) |
 
-공모전 제출 묶음의 일부다. 앱 Hey(캐릭터 헤이파리), 팀 Team Hey. APK는 차량 앱·폰 앱 저장소의 `apk/`에 있다.
+공모전 제출 묶음의 일부다. 앱 Hey(캐릭터 헤이리), 팀 Team Hey. APK는 차량 앱·폰 앱 저장소의 `apk/`에 있다.
 
 - 코드는 MIT(`LICENSE`). 글꼴 등 고지는 `THIRD_PARTY.md`.

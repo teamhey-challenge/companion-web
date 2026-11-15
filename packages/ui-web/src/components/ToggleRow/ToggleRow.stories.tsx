@@ -39,7 +39,7 @@ export const AllStates: Story = {
         <Demo initial={false} label="소리" />
       </Case>
       <Case title="설명 있음">
-        <Demo initial label="대화 요약을 기억으로 저장" description="끄면 헤이파리가 이 대화를 기억하지 않아요." />
+        <Demo initial label="대화 요약을 기억으로 저장" description="끄면 헤이리가 이 대화를 기억하지 않아요." />
       </Case>
       <Case title="비활성 (켬 · 끔)">
         <Demo initial label="자동 번역" disabled />

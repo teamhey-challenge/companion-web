@@ -33,7 +33,7 @@ export const AllStates: Story = {
         <Demo initial label="녹음과 음성 인식에 동의해요 (필수)" />
       </Case>
       <Case title="설명 있음">
-        <Demo initial={false} label="대화 요약을 기억으로 저장해요 (선택)" description="끄면 헤이파리가 이 대화를 기억하지 않아요." />
+        <Demo initial={false} label="대화 요약을 기억으로 저장해요 (선택)" description="끄면 헤이리가 이 대화를 기억하지 않아요." />
       </Case>
       <Case title="오류">
         <Demo initial={false} label="녹음과 음성 인식에 동의해요 (필수)" error="녹음 동의가 있어야 대화할 수 있어요" />

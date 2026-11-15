@@ -54,9 +54,9 @@ describe('createSession', () => {
   test('저장한 토큰을 돌려주고 clear하면 없다', () => {
     const s = createSession(memoryStore());
     expect(s.getToken()).toBeNull();
-    s.save('T', { name: '헤이파리', bodyColor: 1 });
+    s.save('T', { name: '헤이리', bodyColor: 1 });
     expect(s.getToken()).toBe('T');
-    expect(s.getCharacter()).toEqual({ name: '헤이파리', bodyColor: 1 });
+    expect(s.getCharacter()).toEqual({ name: '헤이리', bodyColor: 1 });
     s.clear();
     expect(s.getToken()).toBeNull();
     expect(s.getCharacter()).toBeNull();
