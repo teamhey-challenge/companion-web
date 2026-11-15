@@ -8,7 +8,6 @@
 
 - 서버: https://hey.lastmile.ltd/api, 폰 웹: https://hey.lastmile.ltd/ , Storybook: https://hey.lastmile.ltd/storybook/
 - APK는 이 저장소에 없다. 차량 앱은 companion-car `apk/TeamHey_Hey_release.apk`(https://hey.lastmile.ltd/download/latest.apk), 폰 앱은 companion-phone `apk/TeamHey_Hey-phone_release.apk`(https://hey.lastmile.ltd/download/phone/latest.apk).
-- 심사자 에뮬레이터의 차 등록에는 등록 비밀 파일이 필요하다. 팀이 요청 시 전달하며 방법은 companion-car README에 있다.
 
 ## 테스트 환경
 
