@@ -44,7 +44,7 @@ bun run sb          # Storybook, http://localhost:6106
 
 ## 시안 갤러리
 
-Storybook의 `차 앱 부품`·`차 앱 화면`·`시안`은 그림을 저장소에 두지 않고, 빌드 때 `scripts/collect-gallery.ts`가 [`companion-car`](https://github.com/teamhey-challenge/companion-car)의 스냅샷과 디자인 스튜디오 산출물에서 받아 온다. GitHub 로그인(`gh`) 또는 `GH_TOKEN`이 필요하고, 결과는 gitignore 대상이다.
+Storybook의 `차 앱 부품`·`차 앱 화면`·`시안`은 그림을 저장소에 두지 않고, 빌드 때 `scripts/collect-gallery.ts`가 [`companion-car`](https://github.com/teamhey-challenge/companion-car)의 스냅샷과 Hey Storybook(디자인 부품 저장소) 산출물에서 받아 온다. GitHub 로그인(`gh`) 또는 `GH_TOKEN`이 필요하고, 결과는 gitignore 대상이다.
 
 ```sh
 bun scripts/collect-gallery.ts
