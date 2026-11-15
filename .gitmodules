@@ -1,3 +1,3 @@
 [submodule "shared"]
 	path = shared
-	url = https://github.com/teamhey-challenge/companion-shared.git
+	url = ../companion-shared.git

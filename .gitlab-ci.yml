@@ -1,0 +1,49 @@
+# companion-web pipeline. Gates and thresholds: pleos-challenge/docs/status/2026-11-16-gitlab/ci-gates.md
+# Pipelines run for MRs and main only. Merge requires a green pipeline (main is protected).
+workflow:
+  auto_cancel:
+    on_new_commit: interruptible
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages: [scan, check]
+
+variables:
+  GIT_STRATEGY: fetch
+  GIT_DEPTH: "0"                       # merge-base diff for the secrets scan needs history
+  GIT_SUBMODULE_STRATEGY: recursive    # shared/ (relative url ../companion-shared.git, job token allowlisted)
+
+default:
+  image: oven/bun:1.4.2-debian@sha256:4f6e31d1a54d6a3dd312daef655fc998101b5043d52e12592ac293ef04b9bc73
+  tags: [pleos, docker, light, bun]
+  interruptible: true
+  timeout: 15m
+
+# Secrets scan on lines this change adds (merge-base..HEAD), not on history already published. Blocking.
+secrets-scan:
+  stage: scan
+  image:
+    name: zricethezav/gitleaks:v8.21.2@sha256:0e99e8821643ea5b235718642b93bb32486af9c8162c8b8731f7cbdc951a7f46
+    entrypoint: [""]
+  script:
+    - |
+      base="${CI_MERGE_REQUEST_DIFF_BASE_SHA:-}"
+      if [ -z "$base" ] && [ -n "${CI_COMMIT_BEFORE_SHA:-}" ] && [ "$CI_COMMIT_BEFORE_SHA" != 0000000000000000000000000000000000000000 ]; then base="$CI_COMMIT_BEFORE_SHA"; fi
+      [ -n "$base" ] || base="$(git rev-parse HEAD~1)"
+      echo "scanning added lines in $base..HEAD"
+      git config --global --add safe.directory "$CI_PROJECT_DIR"
+      gitleaks git --log-opts="$base..HEAD" --no-banner --redact --verbose .
+
+# lint + css tokens + tsc + unit + bundle budget + Storybook build + story presence (scripts/check.mjs). Needs git (submodule pin check).
+check:
+  stage: check
+  script:
+    - bun install --frozen-lockfile
+    - bun run check
+  artifacts:
+    when: on_failure
+    expire_in: 3 days
+    paths: [storybook-static/index.json]
+
+# Browser checks (layout, a11y) need Chromium and the shared ds-browser; they run locally via `bun run check -- --layout --a11y`. Advisory in CI: not run yet.
